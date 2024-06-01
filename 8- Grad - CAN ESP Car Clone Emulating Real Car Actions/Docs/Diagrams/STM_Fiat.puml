@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+'Author: Hossam Elwahsh
+
+!theme bluegray
+'!theme aws-orange
+'!theme black-knight
+'!theme blueprint
+'!theme carbon-gray
+'!theme cloudscape-design
+'!theme spacelab
+'skinparam ArrowFontColor #217CA3
+skinparam ArrowFontStyle bold
+skinparam StateAttributeFontStyle bold
+skinparam StateAttributeFontColor white
+
+title  STM32 (Fiat Side) Tasks
+
+skinparam classAttributeFontSize 16
+skinparam classFontSize 18
+hide empty description
+
+state CAN_Processing_Task{
+[*] --> READY
+BLOCKED --> READY : New data enqueued\nby CAN RX IT
+READY -> RUNNING
+RUNNING -> READY
+RUNNING -> BLOCKED : CAN processing queue is empty
+}
+
+state UART_Transmit_Task{
+    state rd2 as "READY"
+    state b2 as "BLOCKED"
+    state rn2 as "RUNNING"
+[*] --> rd2
+b2 --> rd2 : New uart data enqueued\nby CAN_Processing_Task
+rd2 -> rn2
+rn2 -> rd2
+rn2 -> b2 : uart transmit queue is empty
+}
+@enduml

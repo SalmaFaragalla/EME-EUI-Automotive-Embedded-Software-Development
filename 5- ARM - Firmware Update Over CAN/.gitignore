@@ -1,0 +1,10 @@
+
+LED_BLINK/Debug/
+
+can_comm/Debug/
+
+can_comm_transmitter/Debug/
+
+custom_bootloader/Debug/
+
+cmake-build-debug/

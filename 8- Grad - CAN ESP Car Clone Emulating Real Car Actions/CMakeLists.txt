@@ -1,0 +1,238 @@
+cmake_minimum_required(VERSION 3.26)
+project(CAN_ESP_Car_Clone_Emulating_Real_Car_Actions C)
+
+set(CMAKE_C_STANDARD 11)
+
+include_directories(stm32_rc_car/Core/Inc)
+include_directories(stm32_rc_car/Drivers/CMSIS)
+include_directories(stm32_rc_car/Drivers/CMSIS/Device)
+include_directories(stm32_rc_car/Drivers/CMSIS/Device/ST)
+include_directories(stm32_rc_car/Drivers/CMSIS/Device/ST/STM32F1xx)
+include_directories(stm32_rc_car/Drivers/CMSIS/Device/ST/STM32F1xx/Include)
+include_directories(stm32_rc_car/Drivers/CMSIS/Include)
+include_directories(stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc)
+include_directories(stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy)
+include_directories(stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS)
+include_directories(stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include)
+include_directories(stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3)
+include_directories(stm32_real_car/Core/Inc)
+include_directories(stm32_real_car/Drivers/CMSIS)
+include_directories(stm32_real_car/Drivers/CMSIS/Device)
+include_directories(stm32_real_car/Drivers/CMSIS/Device/ST)
+include_directories(stm32_real_car/Drivers/CMSIS/Device/ST/STM32F1xx)
+include_directories(stm32_real_car/Drivers/CMSIS/Device/ST/STM32F1xx/Include)
+include_directories(stm32_real_car/Drivers/CMSIS/Include)
+include_directories(stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc)
+include_directories(stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy)
+include_directories(stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS)
+include_directories(stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include)
+include_directories(stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3)
+
+add_executable(CAN_ESP_Car_Clone_Emulating_Real_Car_Actions
+        stm32_rc_car/Core/Inc/bitmap.h
+        stm32_rc_car/Core/Inc/fonts.h
+        stm32_rc_car/Core/Inc/FreeRTOSConfig.h
+        stm32_rc_car/Core/Inc/horse_anim.h
+        stm32_rc_car/Core/Inc/main.h
+        stm32_rc_car/Core/Inc/ssd1306.h
+        stm32_rc_car/Core/Inc/stm32f1xx_hal_conf.h
+        stm32_rc_car/Core/Inc/stm32f1xx_it.h
+        stm32_rc_car/Core/Inc/test.h
+        stm32_rc_car/Core/Src/fonts.c
+        stm32_rc_car/Core/Src/freertos.c
+        stm32_rc_car/Core/Src/main.c
+        stm32_rc_car/Core/Src/ssd1306.c
+        stm32_rc_car/Core/Src/stm32f1xx_hal_msp.c
+        stm32_rc_car/Core/Src/stm32f1xx_hal_timebase_tim.c
+        stm32_rc_car/Core/Src/stm32f1xx_it.c
+        stm32_rc_car/Core/Src/syscalls.c
+        stm32_rc_car/Core/Src/sysmem.c
+        stm32_rc_car/Core/Src/system_stm32f1xx.c
+        stm32_rc_car/Core/Src/test.c
+        stm32_rc_car/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
+        stm32_rc_car/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
+        stm32_rc_car/Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
+        stm32_rc_car/Drivers/CMSIS/Include/cmsis_armcc.h
+        stm32_rc_car/Drivers/CMSIS/Include/cmsis_armclang.h
+        stm32_rc_car/Drivers/CMSIS/Include/cmsis_compiler.h
+        stm32_rc_car/Drivers/CMSIS/Include/cmsis_gcc.h
+        stm32_rc_car/Drivers/CMSIS/Include/cmsis_iccarm.h
+        stm32_rc_car/Drivers/CMSIS/Include/cmsis_version.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_armv8mbl.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_armv8mml.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_cm0.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_cm0plus.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_cm1.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_cm23.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_cm3.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_cm33.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_cm4.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_cm7.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_sc000.h
+        stm32_rc_car/Drivers/CMSIS/Include/core_sc300.h
+        stm32_rc_car/Drivers/CMSIS/Include/mpu_armv7.h
+        stm32_rc_car/Drivers/CMSIS/Include/mpu_armv8.h
+        stm32_rc_car/Drivers/CMSIS/Include/tz_context.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
+        stm32_rc_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/croutine.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/message_buffer.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_prototypes.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/stack_macros.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/StackMacros.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/croutine.c
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/list.c
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/queue.c
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/tasks.c
+        stm32_rc_car/Middlewares/Third_Party/FreeRTOS/Source/timers.c
+        stm32_real_car/Core/Inc/app_config.h
+        stm32_real_car/Core/Inc/app_interface.h
+        stm32_real_car/Core/Inc/FreeRTOSConfig.h
+        stm32_real_car/Core/Inc/main.h
+        stm32_real_car/Core/Inc/std.h
+        stm32_real_car/Core/Inc/stm32f1xx_hal_conf.h
+        stm32_real_car/Core/Inc/stm32f1xx_it.h
+        stm32_real_car/Core/Src/freertos.c
+        stm32_real_car/Core/Src/main.c
+        stm32_real_car/Core/Src/stm32f1xx_hal_msp.c
+        stm32_real_car/Core/Src/stm32f1xx_hal_timebase_tim.c
+        stm32_real_car/Core/Src/stm32f1xx_it.c
+        stm32_real_car/Core/Src/syscalls.c
+        stm32_real_car/Core/Src/sysmem.c
+        stm32_real_car/Core/Src/system_stm32f1xx.c
+        stm32_real_car/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
+        stm32_real_car/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
+        stm32_real_car/Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
+        stm32_real_car/Drivers/CMSIS/Include/cmsis_armcc.h
+        stm32_real_car/Drivers/CMSIS/Include/cmsis_armclang.h
+        stm32_real_car/Drivers/CMSIS/Include/cmsis_compiler.h
+        stm32_real_car/Drivers/CMSIS/Include/cmsis_gcc.h
+        stm32_real_car/Drivers/CMSIS/Include/cmsis_iccarm.h
+        stm32_real_car/Drivers/CMSIS/Include/cmsis_version.h
+        stm32_real_car/Drivers/CMSIS/Include/core_armv8mbl.h
+        stm32_real_car/Drivers/CMSIS/Include/core_armv8mml.h
+        stm32_real_car/Drivers/CMSIS/Include/core_cm0.h
+        stm32_real_car/Drivers/CMSIS/Include/core_cm0plus.h
+        stm32_real_car/Drivers/CMSIS/Include/core_cm1.h
+        stm32_real_car/Drivers/CMSIS/Include/core_cm23.h
+        stm32_real_car/Drivers/CMSIS/Include/core_cm3.h
+        stm32_real_car/Drivers/CMSIS/Include/core_cm33.h
+        stm32_real_car/Drivers/CMSIS/Include/core_cm4.h
+        stm32_real_car/Drivers/CMSIS/Include/core_cm7.h
+        stm32_real_car/Drivers/CMSIS/Include/core_sc000.h
+        stm32_real_car/Drivers/CMSIS/Include/core_sc300.h
+        stm32_real_car/Drivers/CMSIS/Include/mpu_armv7.h
+        stm32_real_car/Drivers/CMSIS/Include/mpu_armv8.h
+        stm32_real_car/Drivers/CMSIS/Include/tz_context.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_can.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
+        stm32_real_car/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/croutine.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/message_buffer.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_prototypes.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/stack_macros.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/StackMacros.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/croutine.c
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/list.c
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/queue.c
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/tasks.c
+        stm32_real_car/Middlewares/Third_Party/FreeRTOS/Source/timers.c)

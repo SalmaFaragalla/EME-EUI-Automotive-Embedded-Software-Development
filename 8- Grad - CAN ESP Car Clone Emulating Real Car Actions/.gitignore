@@ -1,0 +1,27 @@
+.metadata/
+RemoteSystemsTempFiles/
+*/Debug/*
+stm32_rc_car/CAN_ESP_Car_Clone Debug.cfg
+
+stm32_rc_car/CAN_ESP_Car_Clone Debug.launch
+
+stm32_rc_car/cmake-build-debug/
+
+stm32_rc_car/.idea/
+
+
+.mxproject
+stm32_real_car/cmake-build-debug/
+
+stm32_real_car/.idea/
+
+cmake-build-debug/
+stm32_rc_car/.settings/language.settings.xml
+
+stm32_real_car/.settings/language.settings.xml
+
+stm32_real_car/.cproject
+
+*.bkp
+
+*.dtmp

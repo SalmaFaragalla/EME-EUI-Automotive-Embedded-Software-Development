@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+'autonumber
+!theme bluegray
+skinparam backgroundColor #white
+scale 1000 width
+
+skinparam sequenceParticipantFontSize 25
+skinparam sequenceArrowFontSize 25
+skinparam sequenceNoteFontSize 25
+skinparam sequenceGroupFontSize 25
+skinparam sequenceDividerFontSize 25
+skinparam sequenceLifeLineBorderThickness 50
+'skinparam sequenceLifeLineBorderColor #cyan
+
+
+'title System Sequence Overview
+participant Fiat_CAN_BUS
+participant STM32_F
+participant ESP8266_F
+participant ESP8266_WS
+participant ESP8266_RC
+participant STM32_RC
+
+'== Init ==
+'ESP8266_F -> ESP8266_RC: pair over ESP-NOW
+'ESP8266_F -> ESP8266_WS: pair over ESP-NOW
+
+== Running ==
+Fiat_CAN_BUS -> STM32_F++: New CAN msg
+activate Fiat_CAN_BUS
+STM32_F -> STM32_F: Filter msg by ID
+alt msg relevant - process
+STM32_F -> STM32_F: Process and map message\nto a single byte command
+alt command isn't a duplicate
+STM32_F -> ESP8266_F--++: Send byte over UART
+ESP8266_F -> ESP8266_WS++: Broadcast byte \nover ESP-NOW
+ESP8266_WS -> ESP8266_WS--: Update \nwebserver\nGUI
+ESP8266_F -> ESP8266_RC--++: Broadcast byte \nover ESP-NOW
+ESP8266_RC -> STM32_RC++--: Transmit received\nbyte over UART
+STM32_RC -> STM32_RC--: Process action
+else #yellow duplicated command - drop
+end
+
+else #yellow msg irrelevant - drop
+
+end
+
+@enduml

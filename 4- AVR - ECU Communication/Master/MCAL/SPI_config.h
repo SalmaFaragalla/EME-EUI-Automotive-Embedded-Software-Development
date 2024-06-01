@@ -1,0 +1,29 @@
+/*
+ * SPI_config.h
+ *
+ * Created: 01-Sep-23 12:21:06 PM
+ *  Author: Salma
+ */ 
+
+
+#ifndef SPI_CONFIG_H_
+#define SPI_CONFIG_H_
+
+#include "DIO_interface.h"
+
+#define SPI_PORT DIO_PORTB
+#define SPI_SS_PIN DIO_PIN4
+#define SPI_MOSI_PIN DIO_PIN5
+#define SPI_MISO_PIN DIO_PIN6
+#define SPI_SCK DIO_PIN7
+
+ 
+#define SPI_INT_STATUS SPI_INT_ENABLE
+#define SPI_STATUS SPI_ENABLE
+#define SPI_DATA_ORDER SPI_DATA_LSB_FIRST
+#define SPI_CLK_POLARITY SPI_FALLING_LEADING_RISING_TRAILING
+#define SPI_CLK_PHASE SPI_SETUP_LEADING_SAMPLE_TRAILING
+#define SPI_CLK_FREQ SPI_FREQ_4	
+
+
+#endif /* SPI_CONFIG_H_ */

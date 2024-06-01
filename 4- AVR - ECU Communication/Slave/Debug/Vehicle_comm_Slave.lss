@@ -1,0 +1,1902 @@
+
+Vehicle_comm_Slave.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000866  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000008da  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000a  00800060  00800060  000008da  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000008da  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000090c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000298  00000000  00000000  00000948  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00002ade  00000000  00000000  00000be0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000f74  00000000  00000000  000036be  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000016f6  00000000  00000000  00004632  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000574  00000000  00000000  00005d28  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000011da  00000000  00000000  0000629c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001682  00000000  00000000  00007476  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000001f8  00000000  00000000  00008af8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 36 03 	jmp	0x66c	; 0x66c <__vector_5>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 15 03 	jmp	0x62a	; 0x62a <__vector_11>
+  30:	0c 94 ec 02 	jmp	0x5d8	; 0x5d8 <__vector_12>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__vector_16>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e6 e6       	ldi	r30, 0x66	; 102
+  68:	f8 e0       	ldi	r31, 0x08	; 8
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	aa 36       	cpi	r26, 0x6A	; 106
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 ae 02 	call	0x55c	; 0x55c <main>
+  8a:	0c 94 31 04 	jmp	0x862	; 0x862 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <__vector_16>:
+    
+}
+
+
+ISR(ADC_vect)
+{
+  92:	1f 92       	push	r1
+  94:	0f 92       	push	r0
+  96:	0f b6       	in	r0, 0x3f	; 63
+  98:	0f 92       	push	r0
+  9a:	11 24       	eor	r1, r1
+  9c:	2f 93       	push	r18
+  9e:	3f 93       	push	r19
+  a0:	4f 93       	push	r20
+  a2:	5f 93       	push	r21
+  a4:	6f 93       	push	r22
+  a6:	7f 93       	push	r23
+  a8:	8f 93       	push	r24
+  aa:	9f 93       	push	r25
+  ac:	af 93       	push	r26
+  ae:	bf 93       	push	r27
+
+	Adc_Data = ((u16)ADC_value * 100) / 1023;
+  b0:	24 b1       	in	r18, 0x04	; 4
+  b2:	35 b1       	in	r19, 0x05	; 5
+  b4:	44 e6       	ldi	r20, 0x64	; 100
+  b6:	42 9f       	mul	r20, r18
+  b8:	c0 01       	movw	r24, r0
+  ba:	43 9f       	mul	r20, r19
+  bc:	90 0d       	add	r25, r0
+  be:	11 24       	eor	r1, r1
+  c0:	6f ef       	ldi	r22, 0xFF	; 255
+  c2:	73 e0       	ldi	r23, 0x03	; 3
+  c4:	0e 94 1d 04 	call	0x83a	; 0x83a <__udivmodhi4>
+  c8:	70 93 68 00 	sts	0x0068, r23	; 0x800068 <Adc_Data+0x1>
+  cc:	60 93 67 00 	sts	0x0067, r22	; 0x800067 <Adc_Data>
+}
+  d0:	bf 91       	pop	r27
+  d2:	af 91       	pop	r26
+  d4:	9f 91       	pop	r25
+  d6:	8f 91       	pop	r24
+  d8:	7f 91       	pop	r23
+  da:	6f 91       	pop	r22
+  dc:	5f 91       	pop	r21
+  de:	4f 91       	pop	r20
+  e0:	3f 91       	pop	r19
+  e2:	2f 91       	pop	r18
+  e4:	0f 90       	pop	r0
+  e6:	0f be       	out	0x3f, r0	; 63
+  e8:	0f 90       	pop	r0
+  ea:	1f 90       	pop	r1
+  ec:	18 95       	reti
+
+000000ee <DIO_SetPinDirection>:
+
+enu_dio_error_status_t DIO_SetPinDirection(enu_dio_port_t DIO_PORTx, enu_dio_pin_t DIO_PINx, enu_dio_pin_dir_t DIO_PIN_Dir)
+{
+    enu_dio_error_status_t ret_dio_error_status = DIO_OK;
+
+    if ((DIO_PORTx > DIO_PORT_TOTAL) || (DIO_PINx > DIO_PIN_TOTAL) || (DIO_PIN_Dir > DIO_PIN_DIR_TOTAL))
+  ee:	85 30       	cpi	r24, 0x05	; 5
+  f0:	30 f4       	brcc	.+12     	; 0xfe <DIO_SetPinDirection+0x10>
+  f2:	69 30       	cpi	r22, 0x09	; 9
+  f4:	30 f4       	brcc	.+12     	; 0x102 <DIO_SetPinDirection+0x14>
+  f6:	43 30       	cpi	r20, 0x03	; 3
+  f8:	30 f4       	brcc	.+12     	; 0x106 <DIO_SetPinDirection+0x18>
+#include "DIO_interface.h"
+#include "ATMega32A_Registers.h"
+
+enu_dio_error_status_t DIO_SetPinDirection(enu_dio_port_t DIO_PORTx, enu_dio_pin_t DIO_PINx, enu_dio_pin_dir_t DIO_PIN_Dir)
+{
+    enu_dio_error_status_t ret_dio_error_status = DIO_OK;
+  fa:	90 e0       	ldi	r25, 0x00	; 0
+  fc:	05 c0       	rjmp	.+10     	; 0x108 <DIO_SetPinDirection+0x1a>
+
+    if ((DIO_PORTx > DIO_PORT_TOTAL) || (DIO_PINx > DIO_PIN_TOTAL) || (DIO_PIN_Dir > DIO_PIN_DIR_TOTAL))
+    {
+        ret_dio_error_status = DIO_NOK;
+  fe:	91 e0       	ldi	r25, 0x01	; 1
+ 100:	03 c0       	rjmp	.+6      	; 0x108 <DIO_SetPinDirection+0x1a>
+ 102:	91 e0       	ldi	r25, 0x01	; 1
+ 104:	01 c0       	rjmp	.+2      	; 0x108 <DIO_SetPinDirection+0x1a>
+ 106:	91 e0       	ldi	r25, 0x01	; 1
+    }
+    else
+    { /*Do Nothing */
+    }
+
+    if (ret_dio_error_status == DIO_OK)
+ 108:	91 11       	cpse	r25, r1
+ 10a:	7a c0       	rjmp	.+244    	; 0x200 <DIO_SetPinDirection+0x112>
+    {
+        switch (DIO_PIN_Dir)
+ 10c:	44 23       	and	r20, r20
+ 10e:	b9 f1       	breq	.+110    	; 0x17e <DIO_SetPinDirection+0x90>
+ 110:	41 30       	cpi	r20, 0x01	; 1
+ 112:	09 f0       	breq	.+2      	; 0x116 <DIO_SetPinDirection+0x28>
+ 114:	70 c0       	rjmp	.+224    	; 0x1f6 <DIO_SetPinDirection+0x108>
+        {
+        case DIO_PIN_OUTPUT:
+
+            switch (DIO_PORTx)
+ 116:	81 30       	cpi	r24, 0x01	; 1
+ 118:	89 f0       	breq	.+34     	; 0x13c <DIO_SetPinDirection+0x4e>
+ 11a:	28 f0       	brcs	.+10     	; 0x126 <DIO_SetPinDirection+0x38>
+ 11c:	82 30       	cpi	r24, 0x02	; 2
+ 11e:	c9 f0       	breq	.+50     	; 0x152 <DIO_SetPinDirection+0x64>
+ 120:	83 30       	cpi	r24, 0x03	; 3
+ 122:	11 f1       	breq	.+68     	; 0x168 <DIO_SetPinDirection+0x7a>
+ 124:	6a c0       	rjmp	.+212    	; 0x1fa <DIO_SetPinDirection+0x10c>
+            {
+            case DIO_PORTA:
+                SET_BIT(DDRA, DIO_PINx);
+ 126:	8a b3       	in	r24, 0x1a	; 26
+ 128:	21 e0       	ldi	r18, 0x01	; 1
+ 12a:	30 e0       	ldi	r19, 0x00	; 0
+ 12c:	02 c0       	rjmp	.+4      	; 0x132 <DIO_SetPinDirection+0x44>
+ 12e:	22 0f       	add	r18, r18
+ 130:	33 1f       	adc	r19, r19
+ 132:	6a 95       	dec	r22
+ 134:	e2 f7       	brpl	.-8      	; 0x12e <DIO_SetPinDirection+0x40>
+ 136:	28 2b       	or	r18, r24
+ 138:	2a bb       	out	0x1a, r18	; 26
+                break;
+ 13a:	62 c0       	rjmp	.+196    	; 0x200 <DIO_SetPinDirection+0x112>
+
+            case DIO_PORTB:
+                SET_BIT(DDRB, DIO_PINx);
+ 13c:	87 b3       	in	r24, 0x17	; 23
+ 13e:	21 e0       	ldi	r18, 0x01	; 1
+ 140:	30 e0       	ldi	r19, 0x00	; 0
+ 142:	02 c0       	rjmp	.+4      	; 0x148 <DIO_SetPinDirection+0x5a>
+ 144:	22 0f       	add	r18, r18
+ 146:	33 1f       	adc	r19, r19
+ 148:	6a 95       	dec	r22
+ 14a:	e2 f7       	brpl	.-8      	; 0x144 <DIO_SetPinDirection+0x56>
+ 14c:	28 2b       	or	r18, r24
+ 14e:	27 bb       	out	0x17, r18	; 23
+                break;
+ 150:	57 c0       	rjmp	.+174    	; 0x200 <DIO_SetPinDirection+0x112>
+
+            case DIO_PORTC:
+                SET_BIT(DDRC, DIO_PINx);
+ 152:	84 b3       	in	r24, 0x14	; 20
+ 154:	21 e0       	ldi	r18, 0x01	; 1
+ 156:	30 e0       	ldi	r19, 0x00	; 0
+ 158:	02 c0       	rjmp	.+4      	; 0x15e <DIO_SetPinDirection+0x70>
+ 15a:	22 0f       	add	r18, r18
+ 15c:	33 1f       	adc	r19, r19
+ 15e:	6a 95       	dec	r22
+ 160:	e2 f7       	brpl	.-8      	; 0x15a <DIO_SetPinDirection+0x6c>
+ 162:	28 2b       	or	r18, r24
+ 164:	24 bb       	out	0x14, r18	; 20
+                break;
+ 166:	4c c0       	rjmp	.+152    	; 0x200 <DIO_SetPinDirection+0x112>
+
+            case DIO_PORTD:
+                SET_BIT(DDRD, DIO_PINx);
+ 168:	81 b3       	in	r24, 0x11	; 17
+ 16a:	21 e0       	ldi	r18, 0x01	; 1
+ 16c:	30 e0       	ldi	r19, 0x00	; 0
+ 16e:	02 c0       	rjmp	.+4      	; 0x174 <DIO_SetPinDirection+0x86>
+ 170:	22 0f       	add	r18, r18
+ 172:	33 1f       	adc	r19, r19
+ 174:	6a 95       	dec	r22
+ 176:	e2 f7       	brpl	.-8      	; 0x170 <DIO_SetPinDirection+0x82>
+ 178:	28 2b       	or	r18, r24
+ 17a:	21 bb       	out	0x11, r18	; 17
+                break;
+ 17c:	41 c0       	rjmp	.+130    	; 0x200 <DIO_SetPinDirection+0x112>
+            }
+            break;
+
+        case DIO_PIN_INPUT:
+
+            switch (DIO_PORTx)
+ 17e:	81 30       	cpi	r24, 0x01	; 1
+ 180:	99 f0       	breq	.+38     	; 0x1a8 <DIO_SetPinDirection+0xba>
+ 182:	28 f0       	brcs	.+10     	; 0x18e <DIO_SetPinDirection+0xa0>
+ 184:	82 30       	cpi	r24, 0x02	; 2
+ 186:	e9 f0       	breq	.+58     	; 0x1c2 <DIO_SetPinDirection+0xd4>
+ 188:	83 30       	cpi	r24, 0x03	; 3
+ 18a:	41 f1       	breq	.+80     	; 0x1dc <DIO_SetPinDirection+0xee>
+ 18c:	38 c0       	rjmp	.+112    	; 0x1fe <DIO_SetPinDirection+0x110>
+            {
+            case DIO_PORTA:
+                CLR_BIT(DDRA, DIO_PINx);
+ 18e:	2a b3       	in	r18, 0x1a	; 26
+ 190:	81 e0       	ldi	r24, 0x01	; 1
+ 192:	90 e0       	ldi	r25, 0x00	; 0
+ 194:	02 c0       	rjmp	.+4      	; 0x19a <DIO_SetPinDirection+0xac>
+ 196:	88 0f       	add	r24, r24
+ 198:	99 1f       	adc	r25, r25
+ 19a:	6a 95       	dec	r22
+ 19c:	e2 f7       	brpl	.-8      	; 0x196 <DIO_SetPinDirection+0xa8>
+ 19e:	80 95       	com	r24
+ 1a0:	82 23       	and	r24, r18
+ 1a2:	8a bb       	out	0x1a, r24	; 26
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 1a4:	91 e0       	ldi	r25, 0x01	; 1
+
+            switch (DIO_PORTx)
+            {
+            case DIO_PORTA:
+                CLR_BIT(DDRA, DIO_PINx);
+                break;
+ 1a6:	2c c0       	rjmp	.+88     	; 0x200 <DIO_SetPinDirection+0x112>
+
+            case DIO_PORTB:
+                CLR_BIT(DDRB, DIO_PINx);
+ 1a8:	27 b3       	in	r18, 0x17	; 23
+ 1aa:	81 e0       	ldi	r24, 0x01	; 1
+ 1ac:	90 e0       	ldi	r25, 0x00	; 0
+ 1ae:	02 c0       	rjmp	.+4      	; 0x1b4 <DIO_SetPinDirection+0xc6>
+ 1b0:	88 0f       	add	r24, r24
+ 1b2:	99 1f       	adc	r25, r25
+ 1b4:	6a 95       	dec	r22
+ 1b6:	e2 f7       	brpl	.-8      	; 0x1b0 <DIO_SetPinDirection+0xc2>
+ 1b8:	80 95       	com	r24
+ 1ba:	82 23       	and	r24, r18
+ 1bc:	87 bb       	out	0x17, r24	; 23
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 1be:	91 e0       	ldi	r25, 0x01	; 1
+                CLR_BIT(DDRA, DIO_PINx);
+                break;
+
+            case DIO_PORTB:
+                CLR_BIT(DDRB, DIO_PINx);
+                break;
+ 1c0:	1f c0       	rjmp	.+62     	; 0x200 <DIO_SetPinDirection+0x112>
+
+            case DIO_PORTC:
+                CLR_BIT(DDRC, DIO_PINx);
+ 1c2:	24 b3       	in	r18, 0x14	; 20
+ 1c4:	81 e0       	ldi	r24, 0x01	; 1
+ 1c6:	90 e0       	ldi	r25, 0x00	; 0
+ 1c8:	02 c0       	rjmp	.+4      	; 0x1ce <DIO_SetPinDirection+0xe0>
+ 1ca:	88 0f       	add	r24, r24
+ 1cc:	99 1f       	adc	r25, r25
+ 1ce:	6a 95       	dec	r22
+ 1d0:	e2 f7       	brpl	.-8      	; 0x1ca <DIO_SetPinDirection+0xdc>
+ 1d2:	80 95       	com	r24
+ 1d4:	82 23       	and	r24, r18
+ 1d6:	84 bb       	out	0x14, r24	; 20
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 1d8:	91 e0       	ldi	r25, 0x01	; 1
+                CLR_BIT(DDRB, DIO_PINx);
+                break;
+
+            case DIO_PORTC:
+                CLR_BIT(DDRC, DIO_PINx);
+                break;
+ 1da:	12 c0       	rjmp	.+36     	; 0x200 <DIO_SetPinDirection+0x112>
+
+            case DIO_PORTD:
+                CLR_BIT(DDRD, DIO_PINx);
+ 1dc:	21 b3       	in	r18, 0x11	; 17
+ 1de:	81 e0       	ldi	r24, 0x01	; 1
+ 1e0:	90 e0       	ldi	r25, 0x00	; 0
+ 1e2:	02 c0       	rjmp	.+4      	; 0x1e8 <DIO_SetPinDirection+0xfa>
+ 1e4:	88 0f       	add	r24, r24
+ 1e6:	99 1f       	adc	r25, r25
+ 1e8:	6a 95       	dec	r22
+ 1ea:	e2 f7       	brpl	.-8      	; 0x1e4 <DIO_SetPinDirection+0xf6>
+ 1ec:	80 95       	com	r24
+ 1ee:	82 23       	and	r24, r18
+ 1f0:	81 bb       	out	0x11, r24	; 17
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 1f2:	91 e0       	ldi	r25, 0x01	; 1
+                CLR_BIT(DDRC, DIO_PINx);
+                break;
+
+            case DIO_PORTD:
+                CLR_BIT(DDRD, DIO_PINx);
+                break;
+ 1f4:	05 c0       	rjmp	.+10     	; 0x200 <DIO_SetPinDirection+0x112>
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 1f6:	91 e0       	ldi	r25, 0x01	; 1
+ 1f8:	03 c0       	rjmp	.+6      	; 0x200 <DIO_SetPinDirection+0x112>
+            case DIO_PORTD:
+                SET_BIT(DDRD, DIO_PINx);
+                break;
+
+            default:
+                ret_dio_error_status = DIO_NOK;
+ 1fa:	91 e0       	ldi	r25, 0x01	; 1
+ 1fc:	01 c0       	rjmp	.+2      	; 0x200 <DIO_SetPinDirection+0x112>
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 1fe:	91 e0       	ldi	r25, 0x01	; 1
+    }
+    else
+    { /*Do Nothing */
+    }
+    return ret_dio_error_status;
+}
+ 200:	89 2f       	mov	r24, r25
+ 202:	08 95       	ret
+
+00000204 <DIO_SetPinValue>:
+enu_dio_error_status_t DIO_SetPinValue(enu_dio_port_t DIO_PORTx, enu_dio_pin_t DIO_PINx, enu_dio_pin_val_t DIO_PIN_Val)
+{
+    enu_dio_error_status_t ret_dio_error_status = DIO_OK;
+    if ((DIO_PORTx > DIO_PORT_TOTAL) || (DIO_PINx > DIO_PIN_TOTAL) || (DIO_PIN_Val > DIO_PIN_VAL_TOTAL))
+ 204:	85 30       	cpi	r24, 0x05	; 5
+ 206:	30 f4       	brcc	.+12     	; 0x214 <DIO_SetPinValue+0x10>
+ 208:	69 30       	cpi	r22, 0x09	; 9
+ 20a:	30 f4       	brcc	.+12     	; 0x218 <DIO_SetPinValue+0x14>
+ 20c:	43 30       	cpi	r20, 0x03	; 3
+ 20e:	30 f4       	brcc	.+12     	; 0x21c <DIO_SetPinValue+0x18>
+    }
+    return ret_dio_error_status;
+}
+enu_dio_error_status_t DIO_SetPinValue(enu_dio_port_t DIO_PORTx, enu_dio_pin_t DIO_PINx, enu_dio_pin_val_t DIO_PIN_Val)
+{
+    enu_dio_error_status_t ret_dio_error_status = DIO_OK;
+ 210:	90 e0       	ldi	r25, 0x00	; 0
+ 212:	05 c0       	rjmp	.+10     	; 0x21e <DIO_SetPinValue+0x1a>
+    if ((DIO_PORTx > DIO_PORT_TOTAL) || (DIO_PINx > DIO_PIN_TOTAL) || (DIO_PIN_Val > DIO_PIN_VAL_TOTAL))
+    {
+        ret_dio_error_status = DIO_NOK;
+ 214:	91 e0       	ldi	r25, 0x01	; 1
+ 216:	03 c0       	rjmp	.+6      	; 0x21e <DIO_SetPinValue+0x1a>
+ 218:	91 e0       	ldi	r25, 0x01	; 1
+ 21a:	01 c0       	rjmp	.+2      	; 0x21e <DIO_SetPinValue+0x1a>
+ 21c:	91 e0       	ldi	r25, 0x01	; 1
+    }
+    else
+    { /*Do Nothing */
+    }
+    if (ret_dio_error_status == DIO_OK)
+ 21e:	91 11       	cpse	r25, r1
+ 220:	7a c0       	rjmp	.+244    	; 0x316 <DIO_SetPinValue+0x112>
+    {
+        switch (DIO_PIN_Val)
+ 222:	44 23       	and	r20, r20
+ 224:	b9 f1       	breq	.+110    	; 0x294 <DIO_SetPinValue+0x90>
+ 226:	41 30       	cpi	r20, 0x01	; 1
+ 228:	09 f0       	breq	.+2      	; 0x22c <DIO_SetPinValue+0x28>
+ 22a:	70 c0       	rjmp	.+224    	; 0x30c <DIO_SetPinValue+0x108>
+        {
+        case DIO_PIN_HIGH:
+
+            switch (DIO_PORTx)
+ 22c:	81 30       	cpi	r24, 0x01	; 1
+ 22e:	89 f0       	breq	.+34     	; 0x252 <DIO_SetPinValue+0x4e>
+ 230:	28 f0       	brcs	.+10     	; 0x23c <DIO_SetPinValue+0x38>
+ 232:	82 30       	cpi	r24, 0x02	; 2
+ 234:	c9 f0       	breq	.+50     	; 0x268 <DIO_SetPinValue+0x64>
+ 236:	83 30       	cpi	r24, 0x03	; 3
+ 238:	11 f1       	breq	.+68     	; 0x27e <DIO_SetPinValue+0x7a>
+ 23a:	6a c0       	rjmp	.+212    	; 0x310 <DIO_SetPinValue+0x10c>
+            {
+            case DIO_PORTA:
+                SET_BIT(PORTA, DIO_PINx);
+ 23c:	8b b3       	in	r24, 0x1b	; 27
+ 23e:	21 e0       	ldi	r18, 0x01	; 1
+ 240:	30 e0       	ldi	r19, 0x00	; 0
+ 242:	02 c0       	rjmp	.+4      	; 0x248 <DIO_SetPinValue+0x44>
+ 244:	22 0f       	add	r18, r18
+ 246:	33 1f       	adc	r19, r19
+ 248:	6a 95       	dec	r22
+ 24a:	e2 f7       	brpl	.-8      	; 0x244 <DIO_SetPinValue+0x40>
+ 24c:	28 2b       	or	r18, r24
+ 24e:	2b bb       	out	0x1b, r18	; 27
+                break;
+ 250:	62 c0       	rjmp	.+196    	; 0x316 <DIO_SetPinValue+0x112>
+
+            case DIO_PORTB:
+                SET_BIT(PORTB, DIO_PINx);
+ 252:	88 b3       	in	r24, 0x18	; 24
+ 254:	21 e0       	ldi	r18, 0x01	; 1
+ 256:	30 e0       	ldi	r19, 0x00	; 0
+ 258:	02 c0       	rjmp	.+4      	; 0x25e <DIO_SetPinValue+0x5a>
+ 25a:	22 0f       	add	r18, r18
+ 25c:	33 1f       	adc	r19, r19
+ 25e:	6a 95       	dec	r22
+ 260:	e2 f7       	brpl	.-8      	; 0x25a <DIO_SetPinValue+0x56>
+ 262:	28 2b       	or	r18, r24
+ 264:	28 bb       	out	0x18, r18	; 24
+                break;
+ 266:	57 c0       	rjmp	.+174    	; 0x316 <DIO_SetPinValue+0x112>
+
+            case DIO_PORTC:
+                SET_BIT(PORTC, DIO_PINx);
+ 268:	85 b3       	in	r24, 0x15	; 21
+ 26a:	21 e0       	ldi	r18, 0x01	; 1
+ 26c:	30 e0       	ldi	r19, 0x00	; 0
+ 26e:	02 c0       	rjmp	.+4      	; 0x274 <DIO_SetPinValue+0x70>
+ 270:	22 0f       	add	r18, r18
+ 272:	33 1f       	adc	r19, r19
+ 274:	6a 95       	dec	r22
+ 276:	e2 f7       	brpl	.-8      	; 0x270 <DIO_SetPinValue+0x6c>
+ 278:	28 2b       	or	r18, r24
+ 27a:	25 bb       	out	0x15, r18	; 21
+                break;
+ 27c:	4c c0       	rjmp	.+152    	; 0x316 <DIO_SetPinValue+0x112>
+
+            case DIO_PORTD:
+                SET_BIT(PORTD, DIO_PINx);
+ 27e:	82 b3       	in	r24, 0x12	; 18
+ 280:	21 e0       	ldi	r18, 0x01	; 1
+ 282:	30 e0       	ldi	r19, 0x00	; 0
+ 284:	02 c0       	rjmp	.+4      	; 0x28a <DIO_SetPinValue+0x86>
+ 286:	22 0f       	add	r18, r18
+ 288:	33 1f       	adc	r19, r19
+ 28a:	6a 95       	dec	r22
+ 28c:	e2 f7       	brpl	.-8      	; 0x286 <DIO_SetPinValue+0x82>
+ 28e:	28 2b       	or	r18, r24
+ 290:	22 bb       	out	0x12, r18	; 18
+                break;
+ 292:	41 c0       	rjmp	.+130    	; 0x316 <DIO_SetPinValue+0x112>
+            }
+            break;
+
+        case DIO_PIN_LOW:
+
+            switch (DIO_PORTx)
+ 294:	81 30       	cpi	r24, 0x01	; 1
+ 296:	99 f0       	breq	.+38     	; 0x2be <DIO_SetPinValue+0xba>
+ 298:	28 f0       	brcs	.+10     	; 0x2a4 <DIO_SetPinValue+0xa0>
+ 29a:	82 30       	cpi	r24, 0x02	; 2
+ 29c:	e9 f0       	breq	.+58     	; 0x2d8 <DIO_SetPinValue+0xd4>
+ 29e:	83 30       	cpi	r24, 0x03	; 3
+ 2a0:	41 f1       	breq	.+80     	; 0x2f2 <DIO_SetPinValue+0xee>
+ 2a2:	38 c0       	rjmp	.+112    	; 0x314 <DIO_SetPinValue+0x110>
+            {
+            case DIO_PORTA:
+                CLR_BIT(PORTA, DIO_PINx);
+ 2a4:	2b b3       	in	r18, 0x1b	; 27
+ 2a6:	81 e0       	ldi	r24, 0x01	; 1
+ 2a8:	90 e0       	ldi	r25, 0x00	; 0
+ 2aa:	02 c0       	rjmp	.+4      	; 0x2b0 <DIO_SetPinValue+0xac>
+ 2ac:	88 0f       	add	r24, r24
+ 2ae:	99 1f       	adc	r25, r25
+ 2b0:	6a 95       	dec	r22
+ 2b2:	e2 f7       	brpl	.-8      	; 0x2ac <DIO_SetPinValue+0xa8>
+ 2b4:	80 95       	com	r24
+ 2b6:	82 23       	and	r24, r18
+ 2b8:	8b bb       	out	0x1b, r24	; 27
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 2ba:	91 e0       	ldi	r25, 0x01	; 1
+
+            switch (DIO_PORTx)
+            {
+            case DIO_PORTA:
+                CLR_BIT(PORTA, DIO_PINx);
+                break;
+ 2bc:	2c c0       	rjmp	.+88     	; 0x316 <DIO_SetPinValue+0x112>
+
+            case DIO_PORTB:
+                CLR_BIT(PORTB, DIO_PINx);
+ 2be:	28 b3       	in	r18, 0x18	; 24
+ 2c0:	81 e0       	ldi	r24, 0x01	; 1
+ 2c2:	90 e0       	ldi	r25, 0x00	; 0
+ 2c4:	02 c0       	rjmp	.+4      	; 0x2ca <DIO_SetPinValue+0xc6>
+ 2c6:	88 0f       	add	r24, r24
+ 2c8:	99 1f       	adc	r25, r25
+ 2ca:	6a 95       	dec	r22
+ 2cc:	e2 f7       	brpl	.-8      	; 0x2c6 <DIO_SetPinValue+0xc2>
+ 2ce:	80 95       	com	r24
+ 2d0:	82 23       	and	r24, r18
+ 2d2:	88 bb       	out	0x18, r24	; 24
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 2d4:	91 e0       	ldi	r25, 0x01	; 1
+                CLR_BIT(PORTA, DIO_PINx);
+                break;
+
+            case DIO_PORTB:
+                CLR_BIT(PORTB, DIO_PINx);
+                break;
+ 2d6:	1f c0       	rjmp	.+62     	; 0x316 <DIO_SetPinValue+0x112>
+
+            case DIO_PORTC:
+                CLR_BIT(PORTC, DIO_PINx);
+ 2d8:	25 b3       	in	r18, 0x15	; 21
+ 2da:	81 e0       	ldi	r24, 0x01	; 1
+ 2dc:	90 e0       	ldi	r25, 0x00	; 0
+ 2de:	02 c0       	rjmp	.+4      	; 0x2e4 <DIO_SetPinValue+0xe0>
+ 2e0:	88 0f       	add	r24, r24
+ 2e2:	99 1f       	adc	r25, r25
+ 2e4:	6a 95       	dec	r22
+ 2e6:	e2 f7       	brpl	.-8      	; 0x2e0 <DIO_SetPinValue+0xdc>
+ 2e8:	80 95       	com	r24
+ 2ea:	82 23       	and	r24, r18
+ 2ec:	85 bb       	out	0x15, r24	; 21
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 2ee:	91 e0       	ldi	r25, 0x01	; 1
+                CLR_BIT(PORTB, DIO_PINx);
+                break;
+
+            case DIO_PORTC:
+                CLR_BIT(PORTC, DIO_PINx);
+                break;
+ 2f0:	12 c0       	rjmp	.+36     	; 0x316 <DIO_SetPinValue+0x112>
+
+            case DIO_PORTD:
+                CLR_BIT(PORTD, DIO_PINx);
+ 2f2:	22 b3       	in	r18, 0x12	; 18
+ 2f4:	81 e0       	ldi	r24, 0x01	; 1
+ 2f6:	90 e0       	ldi	r25, 0x00	; 0
+ 2f8:	02 c0       	rjmp	.+4      	; 0x2fe <DIO_SetPinValue+0xfa>
+ 2fa:	88 0f       	add	r24, r24
+ 2fc:	99 1f       	adc	r25, r25
+ 2fe:	6a 95       	dec	r22
+ 300:	e2 f7       	brpl	.-8      	; 0x2fa <DIO_SetPinValue+0xf6>
+ 302:	80 95       	com	r24
+ 304:	82 23       	and	r24, r18
+ 306:	82 bb       	out	0x12, r24	; 18
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 308:	91 e0       	ldi	r25, 0x01	; 1
+                CLR_BIT(PORTC, DIO_PINx);
+                break;
+
+            case DIO_PORTD:
+                CLR_BIT(PORTD, DIO_PINx);
+                break;
+ 30a:	05 c0       	rjmp	.+10     	; 0x316 <DIO_SetPinValue+0x112>
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 30c:	91 e0       	ldi	r25, 0x01	; 1
+ 30e:	03 c0       	rjmp	.+6      	; 0x316 <DIO_SetPinValue+0x112>
+            case DIO_PORTD:
+                SET_BIT(PORTD, DIO_PINx);
+                break;
+
+            default:
+                ret_dio_error_status = DIO_NOK;
+ 310:	91 e0       	ldi	r25, 0x01	; 1
+ 312:	01 c0       	rjmp	.+2      	; 0x316 <DIO_SetPinValue+0x112>
+            default:
+                ret_dio_error_status = DIO_NOK;
+                break;
+            }
+        default:
+            ret_dio_error_status = DIO_NOK;
+ 314:	91 e0       	ldi	r25, 0x01	; 1
+    }
+    else
+    { /*Do Nothing */
+    }
+    return ret_dio_error_status;
+}
+ 316:	89 2f       	mov	r24, r25
+ 318:	08 95       	ret
+
+0000031a <EEPROM_voidSendDataByte>:
+#include "STD_TYPES.h"
+#include "TWI_interface.h"
+
+
+ EEPROM_EROOR_T EEPROM_voidSendDataByte(u16 Copy_u16LocationAddress, u8 Copy_u8DataByte)
+    {
+ 31a:	1f 93       	push	r17
+ 31c:	cf 93       	push	r28
+ 31e:	df 93       	push	r29
+ 320:	d8 2f       	mov	r29, r24
+ 322:	16 2f       	mov	r17, r22
+	    u8 Local_u8AddressPacket;
+	    EEPROM_EROOR_T status=NOERROR ;
+	    //To select the sector
+	  	Local_u8AddressPacket =Fixed_Address | (EEPROM_Adress_CFG<<2) | (u8)(Copy_u16LocationAddress >>8);
+ 324:	c9 2f       	mov	r28, r25
+ 326:	c0 65       	ori	r28, 0x50	; 80
+
+	    /*Send start condition*/
+	    if(TWI_SendStartCondition()!=NoError)
+ 328:	0e 94 78 03 	call	0x6f0	; 0x6f0 <TWI_SendStartCondition>
+ 32c:	81 11       	cpse	r24, r1
+ 32e:	11 c0       	rjmp	.+34     	; 0x352 <EEPROM_voidSendDataByte+0x38>
+	    }
+	    else
+	    {
+
+		    /*Send the address packet*/
+		    if(TWI_SendSlaveAddressWithWrite(Local_u8AddressPacket)!=NoError)
+ 330:	8c 2f       	mov	r24, r28
+ 332:	0e 94 9a 03 	call	0x734	; 0x734 <TWI_SendSlaveAddressWithWrite>
+ 336:	81 11       	cpse	r24, r1
+ 338:	0e c0       	rjmp	.+28     	; 0x356 <EEPROM_voidSendDataByte+0x3c>
+		    }
+		    else
+		    {
+
+			    /*Send the rest 8bits of the location address*/
+			    if(TWI_MasterWriteDataByte((u8)Copy_u16LocationAddress)!=NoError)
+ 33a:	8d 2f       	mov	r24, r29
+ 33c:	0e 94 c6 03 	call	0x78c	; 0x78c <TWI_MasterWriteDataByte>
+ 340:	81 11       	cpse	r24, r1
+ 342:	0b c0       	rjmp	.+22     	; 0x35a <EEPROM_voidSendDataByte+0x40>
+			    }
+			    else
+			    {
+
+				    /*Send the data byte to the memory location*/
+				    if(TWI_MasterWriteDataByte(Copy_u8DataByte)!=NoError)
+ 344:	81 2f       	mov	r24, r17
+ 346:	0e 94 c6 03 	call	0x78c	; 0x78c <TWI_MasterWriteDataByte>
+ 34a:	81 11       	cpse	r24, r1
+ 34c:	08 c0       	rjmp	.+16     	; 0x35e <EEPROM_voidSendDataByte+0x44>
+
+
+ EEPROM_EROOR_T EEPROM_voidSendDataByte(u16 Copy_u16LocationAddress, u8 Copy_u8DataByte)
+    {
+	    u8 Local_u8AddressPacket;
+	    EEPROM_EROOR_T status=NOERROR ;
+ 34e:	c0 e0       	ldi	r28, 0x00	; 0
+ 350:	07 c0       	rjmp	.+14     	; 0x360 <EEPROM_voidSendDataByte+0x46>
+	  	Local_u8AddressPacket =Fixed_Address | (EEPROM_Adress_CFG<<2) | (u8)(Copy_u16LocationAddress >>8);
+
+	    /*Send start condition*/
+	    if(TWI_SendStartCondition()!=NoError)
+	    {
+		    status=EEPROM_Error_start;
+ 352:	c1 e1       	ldi	r28, 0x11	; 17
+ 354:	05 c0       	rjmp	.+10     	; 0x360 <EEPROM_voidSendDataByte+0x46>
+	    {
+
+		    /*Send the address packet*/
+		    if(TWI_SendSlaveAddressWithWrite(Local_u8AddressPacket)!=NoError)
+		    {
+			    status=EEPROM_Error_writeadrees;
+ 356:	c2 e1       	ldi	r28, 0x12	; 18
+ 358:	03 c0       	rjmp	.+6      	; 0x360 <EEPROM_voidSendDataByte+0x46>
+		    {
+
+			    /*Send the rest 8bits of the location address*/
+			    if(TWI_MasterWriteDataByte((u8)Copy_u16LocationAddress)!=NoError)
+			    {
+				    status=EEPROM_Error_byte;
+ 35a:	c3 e1       	ldi	r28, 0x13	; 19
+ 35c:	01 c0       	rjmp	.+2      	; 0x360 <EEPROM_voidSendDataByte+0x46>
+			    {
+
+				    /*Send the data byte to the memory location*/
+				    if(TWI_MasterWriteDataByte(Copy_u8DataByte)!=NoError)
+				    {
+					    status=EEPROM_Error_data;
+ 35e:	c4 e1       	ldi	r28, 0x14	; 20
+				    }
+			    }
+		    }
+	    }
+	    /*Send stop condition*/
+	    TWI_SendStopCondition();
+ 360:	0e 94 e0 03 	call	0x7c0	; 0x7c0 <TWI_SendStopCondition>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 364:	8f e3       	ldi	r24, 0x3F	; 63
+ 366:	9c e9       	ldi	r25, 0x9C	; 156
+ 368:	01 97       	sbiw	r24, 0x01	; 1
+ 36a:	f1 f7       	brne	.-4      	; 0x368 <EEPROM_voidSendDataByte+0x4e>
+ 36c:	00 c0       	rjmp	.+0      	; 0x36e <EEPROM_voidSendDataByte+0x54>
+ 36e:	00 00       	nop
+
+	    /*Delay until the write cycle is finished*/
+	    _delay_ms(10);
+	    return status;
+    }
+ 370:	8c 2f       	mov	r24, r28
+ 372:	df 91       	pop	r29
+ 374:	cf 91       	pop	r28
+ 376:	1f 91       	pop	r17
+ 378:	08 95       	ret
+
+0000037a <EEPROM_u8ReadDataByte>:
+
+u8 EEPROM_u8ReadDataByte(u16 Copy_u16LocationAddress)
+    {
+ 37a:	0f 93       	push	r16
+ 37c:	1f 93       	push	r17
+ 37e:	cf 93       	push	r28
+ 380:	df 93       	push	r29
+ 382:	1f 92       	push	r1
+ 384:	cd b7       	in	r28, 0x3d	; 61
+ 386:	de b7       	in	r29, 0x3e	; 62
+ 388:	08 2f       	mov	r16, r24
+	    u8 Local_u8AddressPacket,Local_u8Data;
+	    EEPROM_EROOR_T status =NOERROR;
+	    //To select the sector
+	  Local_u8AddressPacket =Fixed_Address | (EEPROM_Adress_CFG<<2) | (u8)(Copy_u16LocationAddress >>8);
+ 38a:	19 2f       	mov	r17, r25
+ 38c:	10 65       	ori	r17, 0x50	; 80
+
+
+	    /*Send start condition*/
+	    if(TWI_SendStartCondition()!=NoError)
+ 38e:	0e 94 78 03 	call	0x6f0	; 0x6f0 <TWI_SendStartCondition>
+ 392:	81 11       	cpse	r24, r1
+ 394:	17 c0       	rjmp	.+46     	; 0x3c4 <EEPROM_u8ReadDataByte+0x4a>
+		    status=EEPROM_Error_start;
+	    }
+	    else
+	    {
+		    /*Send the address packet with write request*/
+		    if(TWI_SendSlaveAddressWithWrite(Local_u8AddressPacket)!=NoError)
+ 396:	81 2f       	mov	r24, r17
+ 398:	0e 94 9a 03 	call	0x734	; 0x734 <TWI_SendSlaveAddressWithWrite>
+ 39c:	81 11       	cpse	r24, r1
+ 39e:	12 c0       	rjmp	.+36     	; 0x3c4 <EEPROM_u8ReadDataByte+0x4a>
+
+
+
+
+			    /*Send the rest 8bits of the location address*/
+			    if(TWI_MasterWriteDataByte((u8)Copy_u16LocationAddress)!=NoError)
+ 3a0:	80 2f       	mov	r24, r16
+ 3a2:	0e 94 c6 03 	call	0x78c	; 0x78c <TWI_MasterWriteDataByte>
+ 3a6:	81 11       	cpse	r24, r1
+ 3a8:	0d c0       	rjmp	.+26     	; 0x3c4 <EEPROM_u8ReadDataByte+0x4a>
+			    {
+
+
+
+				    /*Send repeated start to change write request into read request*/
+				    if(TWI_SendRepeatedStart()!=NoError)
+ 3aa:	0e 94 89 03 	call	0x712	; 0x712 <TWI_SendRepeatedStart>
+ 3ae:	81 11       	cpse	r24, r1
+ 3b0:	09 c0       	rjmp	.+18     	; 0x3c4 <EEPROM_u8ReadDataByte+0x4a>
+					    status=EEPROM_Error_Repeatedstart;
+				    }
+				    else
+				    {
+					    /*Send the address packet with read request*/
+					    if(TWI_SendSlaveAddressWithRead(Local_u8AddressPacket)!=NoError)
+ 3b2:	81 2f       	mov	r24, r17
+ 3b4:	0e 94 b0 03 	call	0x760	; 0x760 <TWI_SendSlaveAddressWithRead>
+ 3b8:	81 11       	cpse	r24, r1
+ 3ba:	04 c0       	rjmp	.+8      	; 0x3c4 <EEPROM_u8ReadDataByte+0x4a>
+						    status=EEPROM_Read_Address_Error;
+					    }
+					    else
+					    {
+						    /*Get the data from memory*/
+						    if(TWI_MasterReadDataByte(&Local_u8Data)!=NoError)
+ 3bc:	ce 01       	movw	r24, r28
+ 3be:	01 96       	adiw	r24, 0x01	; 1
+ 3c0:	0e 94 d5 03 	call	0x7aa	; 0x7aa <TWI_MasterReadDataByte>
+			    }
+		    }
+	    }
+
+	    /*send the stop condition*/
+	    TWI_SendStopCondition();
+ 3c4:	0e 94 e0 03 	call	0x7c0	; 0x7c0 <TWI_SendStopCondition>
+
+	    return Local_u8Data;
+ 3c8:	89 81       	ldd	r24, Y+1	; 0x01
+ 3ca:	0f 90       	pop	r0
+ 3cc:	df 91       	pop	r29
+ 3ce:	cf 91       	pop	r28
+ 3d0:	1f 91       	pop	r17
+ 3d2:	0f 91       	pop	r16
+ 3d4:	08 95       	ret
+
+000003d6 <GIE_Enable>:
+#include "GIE_Private.h"
+#include "BIT_MATH.h"
+
+void GIE_Enable(void)
+{
+	SET_BIT(SREG , I_BIT);
+ 3d6:	8f b7       	in	r24, 0x3f	; 63
+ 3d8:	80 68       	ori	r24, 0x80	; 128
+ 3da:	8f bf       	out	0x3f, r24	; 63
+ 3dc:	08 95       	ret
+
+000003de <LCD_WriteCommand>:
+    
+    
+}
+
+void LCD_WriteCommand(u8 cmd)
+{
+ 3de:	cf 93       	push	r28
+ 3e0:	c8 2f       	mov	r28, r24
+    /*
+    RS (Register Select)
+    RS = 0 -> Command Register is selected
+    */
+    DIO_SetPinValue(LCD_4BIT_CMD_PORT ,LCD_RS_PIN ,DIO_PIN_LOW);
+ 3e2:	40 e0       	ldi	r20, 0x00	; 0
+ 3e4:	63 e0       	ldi	r22, 0x03	; 3
+ 3e6:	80 e0       	ldi	r24, 0x00	; 0
+ 3e8:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+ 3ec:	8f e9       	ldi	r24, 0x9F	; 159
+ 3ee:	9f e0       	ldi	r25, 0x0F	; 15
+ 3f0:	01 97       	sbiw	r24, 0x01	; 1
+ 3f2:	f1 f7       	brne	.-4      	; 0x3f0 <LCD_WriteCommand+0x12>
+ 3f4:	00 c0       	rjmp	.+0      	; 0x3f6 <LCD_WriteCommand+0x18>
+ 3f6:	00 00       	nop
+    For 4-bit interface data, only four bus lines (DB4 to DB7) are used for transfer. Bus lines DB0 to DB3
+    are disabled. The data transfer between the HD44780U and the MPU is completed after the 4-bit data
+    has been transferred twice. As for the order of data transfer, the four high order bits (for 8-bit operation,
+    DB4 to DB7) are transferred before the four low order bits (for 8-bit operation, DB0 to DB3).
+    */
+    DIO_SetPinValue (LCD_4BIT_DATA_PORT, LCD_D4 , GET_BIT(cmd,4));
+ 3f8:	c4 fb       	bst	r28, 4
+ 3fa:	44 27       	eor	r20, r20
+ 3fc:	40 f9       	bld	r20, 0
+ 3fe:	60 e0       	ldi	r22, 0x00	; 0
+ 400:	81 e0       	ldi	r24, 0x01	; 1
+ 402:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+    DIO_SetPinValue (LCD_4BIT_DATA_PORT, LCD_D5 , GET_BIT(cmd,5));
+ 406:	c5 fb       	bst	r28, 5
+ 408:	44 27       	eor	r20, r20
+ 40a:	40 f9       	bld	r20, 0
+ 40c:	61 e0       	ldi	r22, 0x01	; 1
+ 40e:	81 e0       	ldi	r24, 0x01	; 1
+ 410:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+    DIO_SetPinValue (LCD_4BIT_DATA_PORT, LCD_D6 , GET_BIT(cmd,6));
+ 414:	c6 fb       	bst	r28, 6
+ 416:	44 27       	eor	r20, r20
+ 418:	40 f9       	bld	r20, 0
+ 41a:	62 e0       	ldi	r22, 0x02	; 2
+ 41c:	81 e0       	ldi	r24, 0x01	; 1
+ 41e:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+    DIO_SetPinValue (LCD_4BIT_DATA_PORT, LCD_D7 , GET_BIT(cmd,7));
+ 422:	4c 2f       	mov	r20, r28
+ 424:	44 1f       	adc	r20, r20
+ 426:	44 27       	eor	r20, r20
+ 428:	44 1f       	adc	r20, r20
+ 42a:	64 e0       	ldi	r22, 0x04	; 4
+ 42c:	81 e0       	ldi	r24, 0x01	; 1
+ 42e:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+ 432:	8f e9       	ldi	r24, 0x9F	; 159
+ 434:	9f e0       	ldi	r25, 0x0F	; 15
+ 436:	01 97       	sbiw	r24, 0x01	; 1
+ 438:	f1 f7       	brne	.-4      	; 0x436 <__EEPROM_REGION_LENGTH__+0x36>
+ 43a:	00 c0       	rjmp	.+0      	; 0x43c <__EEPROM_REGION_LENGTH__+0x3c>
+ 43c:	00 00       	nop
+    
+    
+    /*
+    Falling Edge to process the data
+    */
+    DIO_SetPinValue(LCD_4BIT_CMD_PORT ,LCD_EN_PIN ,DIO_PIN_HIGH);
+ 43e:	41 e0       	ldi	r20, 0x01	; 1
+ 440:	62 e0       	ldi	r22, 0x02	; 2
+ 442:	80 e0       	ldi	r24, 0x00	; 0
+ 444:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+ 448:	8f e9       	ldi	r24, 0x9F	; 159
+ 44a:	9f e0       	ldi	r25, 0x0F	; 15
+ 44c:	01 97       	sbiw	r24, 0x01	; 1
+ 44e:	f1 f7       	brne	.-4      	; 0x44c <__EEPROM_REGION_LENGTH__+0x4c>
+ 450:	00 c0       	rjmp	.+0      	; 0x452 <__EEPROM_REGION_LENGTH__+0x52>
+ 452:	00 00       	nop
+    _delay_ms(1);
+    DIO_SetPinValue(LCD_4BIT_CMD_PORT ,LCD_EN_PIN ,DIO_PIN_LOW);      
+ 454:	40 e0       	ldi	r20, 0x00	; 0
+ 456:	62 e0       	ldi	r22, 0x02	; 2
+ 458:	80 e0       	ldi	r24, 0x00	; 0
+ 45a:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+ 45e:	8f e9       	ldi	r24, 0x9F	; 159
+ 460:	9f e0       	ldi	r25, 0x0F	; 15
+ 462:	01 97       	sbiw	r24, 0x01	; 1
+ 464:	f1 f7       	brne	.-4      	; 0x462 <__EEPROM_REGION_LENGTH__+0x62>
+ 466:	00 c0       	rjmp	.+0      	; 0x468 <__EEPROM_REGION_LENGTH__+0x68>
+ 468:	00 00       	nop
+    _delay_ms(1);
+
+
+    DIO_SetPinValue (LCD_4BIT_DATA_PORT, LCD_D4 , GET_BIT(cmd,0));
+ 46a:	4c 2f       	mov	r20, r28
+ 46c:	41 70       	andi	r20, 0x01	; 1
+ 46e:	60 e0       	ldi	r22, 0x00	; 0
+ 470:	81 e0       	ldi	r24, 0x01	; 1
+ 472:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+    DIO_SetPinValue (LCD_4BIT_DATA_PORT, LCD_D5 , GET_BIT(cmd,1));
+ 476:	c1 fb       	bst	r28, 1
+ 478:	44 27       	eor	r20, r20
+ 47a:	40 f9       	bld	r20, 0
+ 47c:	61 e0       	ldi	r22, 0x01	; 1
+ 47e:	81 e0       	ldi	r24, 0x01	; 1
+ 480:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+    DIO_SetPinValue (LCD_4BIT_DATA_PORT, LCD_D6 , GET_BIT(cmd,2));
+ 484:	c2 fb       	bst	r28, 2
+ 486:	44 27       	eor	r20, r20
+ 488:	40 f9       	bld	r20, 0
+ 48a:	62 e0       	ldi	r22, 0x02	; 2
+ 48c:	81 e0       	ldi	r24, 0x01	; 1
+ 48e:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+    DIO_SetPinValue (LCD_4BIT_DATA_PORT, LCD_D7 , GET_BIT(cmd,3));
+ 492:	c3 fb       	bst	r28, 3
+ 494:	44 27       	eor	r20, r20
+ 496:	40 f9       	bld	r20, 0
+ 498:	64 e0       	ldi	r22, 0x04	; 4
+ 49a:	81 e0       	ldi	r24, 0x01	; 1
+ 49c:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+ 4a0:	8f e9       	ldi	r24, 0x9F	; 159
+ 4a2:	9f e0       	ldi	r25, 0x0F	; 15
+ 4a4:	01 97       	sbiw	r24, 0x01	; 1
+ 4a6:	f1 f7       	brne	.-4      	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 4a8:	00 c0       	rjmp	.+0      	; 0x4aa <__EEPROM_REGION_LENGTH__+0xaa>
+ 4aa:	00 00       	nop
+    _delay_ms(1);
+    
+    /*
+    Falling Edge to process the data
+    */
+    DIO_SetPinValue(LCD_4BIT_CMD_PORT ,LCD_EN_PIN ,DIO_PIN_HIGH);     
+ 4ac:	41 e0       	ldi	r20, 0x01	; 1
+ 4ae:	62 e0       	ldi	r22, 0x02	; 2
+ 4b0:	80 e0       	ldi	r24, 0x00	; 0
+ 4b2:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+ 4b6:	8f e9       	ldi	r24, 0x9F	; 159
+ 4b8:	9f e0       	ldi	r25, 0x0F	; 15
+ 4ba:	01 97       	sbiw	r24, 0x01	; 1
+ 4bc:	f1 f7       	brne	.-4      	; 0x4ba <__EEPROM_REGION_LENGTH__+0xba>
+ 4be:	00 c0       	rjmp	.+0      	; 0x4c0 <__EEPROM_REGION_LENGTH__+0xc0>
+ 4c0:	00 00       	nop
+    _delay_ms(1);
+    DIO_SetPinValue(LCD_4BIT_CMD_PORT ,LCD_EN_PIN ,DIO_PIN_LOW);
+ 4c2:	40 e0       	ldi	r20, 0x00	; 0
+ 4c4:	62 e0       	ldi	r22, 0x02	; 2
+ 4c6:	80 e0       	ldi	r24, 0x00	; 0
+ 4c8:	0e 94 02 01 	call	0x204	; 0x204 <DIO_SetPinValue>
+ 4cc:	8f e1       	ldi	r24, 0x1F	; 31
+ 4ce:	9e e4       	ldi	r25, 0x4E	; 78
+ 4d0:	01 97       	sbiw	r24, 0x01	; 1
+ 4d2:	f1 f7       	brne	.-4      	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 4d4:	00 c0       	rjmp	.+0      	; 0x4d6 <__EEPROM_REGION_LENGTH__+0xd6>
+ 4d6:	00 00       	nop
+    
+    _delay_ms(5); /*LCD store delay*/
+}
+ 4d8:	cf 91       	pop	r28
+ 4da:	08 95       	ret
+
+000004dc <LCD_Init>:
+/*https://www.8051projects.net/lcd-interfacing/commands.php*/
+
+void LCD_Init(void)
+{
+    
+    DIO_SetPinDirection(LCD_4BIT_CMD_PORT ,LCD_RS_PIN ,DIO_PIN_OUTPUT);
+ 4dc:	41 e0       	ldi	r20, 0x01	; 1
+ 4de:	63 e0       	ldi	r22, 0x03	; 3
+ 4e0:	80 e0       	ldi	r24, 0x00	; 0
+ 4e2:	0e 94 77 00 	call	0xee	; 0xee <DIO_SetPinDirection>
+    /*DIO_SetPinDir(LCD_4BIT_CMD_PORT ,LCD_RW_PIN ,DIO_PIN_OUTPUT);*/
+    DIO_SetPinDirection(LCD_4BIT_CMD_PORT ,LCD_EN_PIN ,DIO_PIN_OUTPUT);
+ 4e6:	41 e0       	ldi	r20, 0x01	; 1
+ 4e8:	62 e0       	ldi	r22, 0x02	; 2
+ 4ea:	80 e0       	ldi	r24, 0x00	; 0
+ 4ec:	0e 94 77 00 	call	0xee	; 0xee <DIO_SetPinDirection>
+    
+    DIO_SetPinDirection(LCD_4BIT_DATA_PORT ,LCD_D4 ,DIO_PIN_OUTPUT);
+ 4f0:	41 e0       	ldi	r20, 0x01	; 1
+ 4f2:	60 e0       	ldi	r22, 0x00	; 0
+ 4f4:	81 e0       	ldi	r24, 0x01	; 1
+ 4f6:	0e 94 77 00 	call	0xee	; 0xee <DIO_SetPinDirection>
+    DIO_SetPinDirection(LCD_4BIT_DATA_PORT ,LCD_D5 ,DIO_PIN_OUTPUT);
+ 4fa:	41 e0       	ldi	r20, 0x01	; 1
+ 4fc:	61 e0       	ldi	r22, 0x01	; 1
+ 4fe:	81 e0       	ldi	r24, 0x01	; 1
+ 500:	0e 94 77 00 	call	0xee	; 0xee <DIO_SetPinDirection>
+    DIO_SetPinDirection(LCD_4BIT_DATA_PORT ,LCD_D6 ,DIO_PIN_OUTPUT);
+ 504:	41 e0       	ldi	r20, 0x01	; 1
+ 506:	62 e0       	ldi	r22, 0x02	; 2
+ 508:	81 e0       	ldi	r24, 0x01	; 1
+ 50a:	0e 94 77 00 	call	0xee	; 0xee <DIO_SetPinDirection>
+    DIO_SetPinDirection(LCD_4BIT_DATA_PORT ,LCD_D7 ,DIO_PIN_OUTPUT);
+ 50e:	41 e0       	ldi	r20, 0x01	; 1
+ 510:	64 e0       	ldi	r22, 0x04	; 4
+ 512:	81 e0       	ldi	r24, 0x01	; 1
+ 514:	0e 94 77 00 	call	0xee	; 0xee <DIO_SetPinDirection>
+ 518:	8f e9       	ldi	r24, 0x9F	; 159
+ 51a:	9f e0       	ldi	r25, 0x0F	; 15
+ 51c:	01 97       	sbiw	r24, 0x01	; 1
+ 51e:	f1 f7       	brne	.-4      	; 0x51c <LCD_Init+0x40>
+ 520:	00 c0       	rjmp	.+0      	; 0x522 <LCD_Init+0x46>
+ 522:	00 00       	nop
+    
+   _delay_ms(1);
+
+
+    LCD_WriteCommand (FUNCTION_SET);
+ 524:	88 e2       	ldi	r24, 0x28	; 40
+ 526:	0e 94 ef 01 	call	0x3de	; 0x3de <LCD_WriteCommand>
+ 52a:	8f e9       	ldi	r24, 0x9F	; 159
+ 52c:	9f e0       	ldi	r25, 0x0F	; 15
+ 52e:	01 97       	sbiw	r24, 0x01	; 1
+ 530:	f1 f7       	brne	.-4      	; 0x52e <LCD_Init+0x52>
+ 532:	00 c0       	rjmp	.+0      	; 0x534 <LCD_Init+0x58>
+ 534:	00 00       	nop
+    _delay_ms(1);
+    LCD_WriteCommand (CLEAR_DISPLAY); 
+ 536:	81 e0       	ldi	r24, 0x01	; 1
+ 538:	0e 94 ef 01 	call	0x3de	; 0x3de <LCD_WriteCommand>
+ 53c:	8f e9       	ldi	r24, 0x9F	; 159
+ 53e:	9f e0       	ldi	r25, 0x0F	; 15
+ 540:	01 97       	sbiw	r24, 0x01	; 1
+ 542:	f1 f7       	brne	.-4      	; 0x540 <LCD_Init+0x64>
+ 544:	00 c0       	rjmp	.+0      	; 0x546 <LCD_Init+0x6a>
+ 546:	00 00       	nop
+    _delay_ms(1);
+    LCD_WriteCommand (DISPLAY_ON_CURSOR_BLINKING); 
+ 548:	8c e0       	ldi	r24, 0x0C	; 12
+ 54a:	0e 94 ef 01 	call	0x3de	; 0x3de <LCD_WriteCommand>
+ 54e:	8f e9       	ldi	r24, 0x9F	; 159
+ 550:	9f e0       	ldi	r25, 0x0F	; 15
+ 552:	01 97       	sbiw	r24, 0x01	; 1
+ 554:	f1 f7       	brne	.-4      	; 0x552 <LCD_Init+0x76>
+ 556:	00 c0       	rjmp	.+0      	; 0x558 <LCD_Init+0x7c>
+ 558:	00 00       	nop
+ 55a:	08 95       	ret
+
+0000055c <main>:
+#include "Keypad.h"
+extern u16 Adc_Data;
+extern u8 key;
+int main(void)
+{
+    Car_SlaveInit();
+ 55c:	0e 94 f4 03 	call	0x7e8	; 0x7e8 <Car_SlaveInit>
+               
+    while (1)
+    {
+     
+           Car_SlaveRunnable();
+ 560:	0e 94 05 04 	call	0x80a	; 0x80a <Car_SlaveRunnable>
+ 564:	fd cf       	rjmp	.-6      	; 0x560 <main+0x4>
+
+00000566 <SPI_Init>:
+    DIO_SetPinDirection(SPI_PORT, SPI_SS_PIN, DIO_PIN_OUTPUT);
+    DIO_SetPinValue(SPI_PORT, SPI_SS_PIN, DIO_PIN_LOW);
+
+    DIO_SetPinDirection(SPI_PORT, SPI_MOSI_PIN, DIO_PIN_OUTPUT);
+    DIO_SetPinDirection(SPI_PORT, SPI_MISO_PIN, DIO_PIN_INPUT);
+    DIO_SetPinDirection(SPI_PORT, SPI_SCK, DIO_PIN_OUTPUT);
+ 566:	0e 94 eb 01 	call	0x3d6	; 0x3d6 <GIE_Enable>
+ 56a:	8c ee       	ldi	r24, 0xEC	; 236
+ 56c:	8d b9       	out	0x0d, r24	; 13
+ 56e:	08 95       	ret
+
+00000570 <SPI_SlaveInit>:
+}
+void SPI_SlaveInit(void)
+{
+    /*Set as Slave and initialize */
+    SPI_Init();
+ 570:	0e 94 b3 02 	call	0x566	; 0x566 <SPI_Init>
+    CLR_BIT(SPCR, SPCR_MSTR);
+ 574:	8d b1       	in	r24, 0x0d	; 13
+ 576:	8f 7e       	andi	r24, 0xEF	; 239
+ 578:	8d b9       	out	0x0d, r24	; 13
+
+    /*Initialize pins */
+    DIO_SetPinDirection(SPI_PORT, SPI_SS_PIN, DIO_PIN_INPUT);
+ 57a:	40 e0       	ldi	r20, 0x00	; 0
+ 57c:	64 e0       	ldi	r22, 0x04	; 4
+ 57e:	81 e0       	ldi	r24, 0x01	; 1
+ 580:	0e 94 77 00 	call	0xee	; 0xee <DIO_SetPinDirection>
+    DIO_SetPinDirection(SPI_PORT, SPI_MOSI_PIN, DIO_PIN_INPUT);
+ 584:	40 e0       	ldi	r20, 0x00	; 0
+ 586:	65 e0       	ldi	r22, 0x05	; 5
+ 588:	81 e0       	ldi	r24, 0x01	; 1
+ 58a:	0e 94 77 00 	call	0xee	; 0xee <DIO_SetPinDirection>
+    DIO_SetPinDirection(SPI_PORT, SPI_MISO_PIN, DIO_PIN_OUTPUT);
+ 58e:	41 e0       	ldi	r20, 0x01	; 1
+ 590:	66 e0       	ldi	r22, 0x06	; 6
+ 592:	81 e0       	ldi	r24, 0x01	; 1
+ 594:	0e 94 77 00 	call	0xee	; 0xee <DIO_SetPinDirection>
+    DIO_SetPinDirection(SPI_PORT, SPI_SCK, DIO_PIN_INPUT);
+ 598:	40 e0       	ldi	r20, 0x00	; 0
+ 59a:	67 e0       	ldi	r22, 0x07	; 7
+ 59c:	81 e0       	ldi	r24, 0x01	; 1
+ 59e:	0e 94 77 00 	call	0xee	; 0xee <DIO_SetPinDirection>
+ 5a2:	08 95       	ret
+
+000005a4 <SPI_Transceive>:
+}
+u8 SPI_Transceive(u8 transmitData)
+{
+
+    /* Send Data */
+    SPDR = transmitData;
+ 5a4:	8f b9       	out	0x0f, r24	; 15
+    /* Wait till transfer is complete*/
+    while (GET_BIT(SPSR, SPSR_SPIF) == 0);
+ 5a6:	77 9b       	sbis	0x0e, 7	; 14
+ 5a8:	fe cf       	rjmp	.-4      	; 0x5a6 <SPI_Transceive+0x2>
+ 5aa:	8f e3       	ldi	r24, 0x3F	; 63
+ 5ac:	9f e1       	ldi	r25, 0x1F	; 31
+ 5ae:	01 97       	sbiw	r24, 0x01	; 1
+ 5b0:	f1 f7       	brne	.-4      	; 0x5ae <SPI_Transceive+0xa>
+ 5b2:	00 c0       	rjmp	.+0      	; 0x5b4 <SPI_Transceive+0x10>
+ 5b4:	00 00       	nop
+    _delay_ms(2);
+    /* Receive Data*/
+    return SPDR;
+ 5b6:	8f b1       	in	r24, 0x0f	; 15
+}
+ 5b8:	08 95       	ret
+
+000005ba <SPI_Tranceive_NoBlock>:
+
+
+ SPI_Status_T SPI_Tranceive_NoBlock(u8*data )
+ {
+ 5ba:	fc 01       	movw	r30, r24
+	 u8 SPI_data=SPDR;
+ 5bc:	9f b1       	in	r25, 0x0f	; 15
+	 SPI_Status_T status ;
+	 if(SPI_data==0){
+ 5be:	99 23       	and	r25, r25
+ 5c0:	21 f0       	breq	.+8      	; 0x5ca <SPI_Tranceive_NoBlock+0x10>
+		 SPI_data=*data;
+		 status=Send_NoBlock;
+	 }
+	 else{
+		 *data=SPI_data;
+ 5c2:	90 83       	st	Z, r25
+		 SPDR=0;
+ 5c4:	1f b8       	out	0x0f, r1	; 15
+		 status =Recive_NoBlock;
+ 5c6:	81 e0       	ldi	r24, 0x01	; 1
+ 5c8:	08 95       	ret
+ {
+	 u8 SPI_data=SPDR;
+	 SPI_Status_T status ;
+	 if(SPI_data==0){
+		 SPI_data=*data;
+		 status=Send_NoBlock;
+ 5ca:	80 e0       	ldi	r24, 0x00	; 0
+		 *data=SPI_data;
+		 SPDR=0;
+		 status =Recive_NoBlock;
+	 }
+	 return status ;
+ }
+ 5cc:	08 95       	ret
+
+000005ce <SPI_SetCallBack>:
+ 
+void SPI_SetCallBack(void (*fptr)(void))
+{
+    SPI_g_Callback = fptr;
+ 5ce:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5d2:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5d6:	08 95       	ret
+
+000005d8 <__vector_12>:
+}
+
+void __vector_12(void) __attribute__((signal));
+void __vector_12(void)
+{
+ 5d8:	1f 92       	push	r1
+ 5da:	0f 92       	push	r0
+ 5dc:	0f b6       	in	r0, 0x3f	; 63
+ 5de:	0f 92       	push	r0
+ 5e0:	11 24       	eor	r1, r1
+ 5e2:	2f 93       	push	r18
+ 5e4:	3f 93       	push	r19
+ 5e6:	4f 93       	push	r20
+ 5e8:	5f 93       	push	r21
+ 5ea:	6f 93       	push	r22
+ 5ec:	7f 93       	push	r23
+ 5ee:	8f 93       	push	r24
+ 5f0:	9f 93       	push	r25
+ 5f2:	af 93       	push	r26
+ 5f4:	bf 93       	push	r27
+ 5f6:	ef 93       	push	r30
+ 5f8:	ff 93       	push	r31
+    if (SPI_g_Callback != NULL_PTR)
+ 5fa:	e0 91 60 00 	lds	r30, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5fe:	f0 91 61 00 	lds	r31, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 602:	30 97       	sbiw	r30, 0x00	; 0
+ 604:	09 f0       	breq	.+2      	; 0x608 <__vector_12+0x30>
+    {
+        SPI_g_Callback();
+ 606:	09 95       	icall
+    }
+}
+ 608:	ff 91       	pop	r31
+ 60a:	ef 91       	pop	r30
+ 60c:	bf 91       	pop	r27
+ 60e:	af 91       	pop	r26
+ 610:	9f 91       	pop	r25
+ 612:	8f 91       	pop	r24
+ 614:	7f 91       	pop	r23
+ 616:	6f 91       	pop	r22
+ 618:	5f 91       	pop	r21
+ 61a:	4f 91       	pop	r20
+ 61c:	3f 91       	pop	r19
+ 61e:	2f 91       	pop	r18
+ 620:	0f 90       	pop	r0
+ 622:	0f be       	out	0x3f, r0	; 63
+ 624:	0f 90       	pop	r0
+ 626:	1f 90       	pop	r1
+ 628:	18 95       	reti
+
+0000062a <__vector_11>:
+
+
+
+void TIMER2_setCallBack(void (*a_ptr)(void)){
+	
+	g_timer2CallBackPtr=a_ptr;
+ 62a:	1f 92       	push	r1
+ 62c:	0f 92       	push	r0
+ 62e:	0f b6       	in	r0, 0x3f	; 63
+ 630:	0f 92       	push	r0
+ 632:	11 24       	eor	r1, r1
+ 634:	8f 93       	push	r24
+ 636:	9f 93       	push	r25
+ 638:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <OVF_Counter>
+ 63c:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <OVF_Counter+0x1>
+ 640:	01 96       	adiw	r24, 0x01	; 1
+ 642:	90 93 63 00 	sts	0x0063, r25	; 0x800063 <OVF_Counter+0x1>
+ 646:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <OVF_Counter>
+ 64a:	4f 97       	sbiw	r24, 0x1f	; 31
+ 64c:	41 f4       	brne	.+16     	; 0x65e <__vector_11+0x34>
+ 64e:	9b b3       	in	r25, 0x1b	; 27
+ 650:	80 e2       	ldi	r24, 0x20	; 32
+ 652:	89 27       	eor	r24, r25
+ 654:	8b bb       	out	0x1b, r24	; 27
+ 656:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <OVF_Counter+0x1>
+ 65a:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <OVF_Counter>
+ 65e:	9f 91       	pop	r25
+ 660:	8f 91       	pop	r24
+ 662:	0f 90       	pop	r0
+ 664:	0f be       	out	0x3f, r0	; 63
+ 666:	0f 90       	pop	r0
+ 668:	1f 90       	pop	r1
+ 66a:	18 95       	reti
+
+0000066c <__vector_5>:
+}
+
+ISR(TIMER2_OVF_vect){
+ 66c:	1f 92       	push	r1
+ 66e:	0f 92       	push	r0
+ 670:	0f b6       	in	r0, 0x3f	; 63
+ 672:	0f 92       	push	r0
+ 674:	11 24       	eor	r1, r1
+ 676:	2f 93       	push	r18
+ 678:	3f 93       	push	r19
+ 67a:	4f 93       	push	r20
+ 67c:	5f 93       	push	r21
+ 67e:	6f 93       	push	r22
+ 680:	7f 93       	push	r23
+ 682:	8f 93       	push	r24
+ 684:	9f 93       	push	r25
+ 686:	af 93       	push	r26
+ 688:	bf 93       	push	r27
+ 68a:	ef 93       	push	r30
+ 68c:	ff 93       	push	r31
+	if(g_timer2CallBackPtr != NULL_PTR){
+ 68e:	e0 91 64 00 	lds	r30, 0x0064	; 0x800064 <g_timer2CallBackPtr>
+ 692:	f0 91 65 00 	lds	r31, 0x0065	; 0x800065 <g_timer2CallBackPtr+0x1>
+ 696:	30 97       	sbiw	r30, 0x00	; 0
+ 698:	09 f0       	breq	.+2      	; 0x69c <__vector_5+0x30>
+		(*g_timer2CallBackPtr)();
+ 69a:	09 95       	icall
+	}
+}
+ 69c:	ff 91       	pop	r31
+ 69e:	ef 91       	pop	r30
+ 6a0:	bf 91       	pop	r27
+ 6a2:	af 91       	pop	r26
+ 6a4:	9f 91       	pop	r25
+ 6a6:	8f 91       	pop	r24
+ 6a8:	7f 91       	pop	r23
+ 6aa:	6f 91       	pop	r22
+ 6ac:	5f 91       	pop	r21
+ 6ae:	4f 91       	pop	r20
+ 6b0:	3f 91       	pop	r19
+ 6b2:	2f 91       	pop	r18
+ 6b4:	0f 90       	pop	r0
+ 6b6:	0f be       	out	0x3f, r0	; 63
+ 6b8:	0f 90       	pop	r0
+ 6ba:	1f 90       	pop	r1
+ 6bc:	18 95       	reti
+
+000006be <TWI_SETBit_Rate>:
+	}
+	else{
+		//Do Nothing
+	}
+	return status;
+}
+ 6be:	8c e0       	ldi	r24, 0x0C	; 12
+ 6c0:	80 b9       	out	0x00, r24	; 0
+ 6c2:	81 b1       	in	r24, 0x01	; 1
+ 6c4:	8e 7f       	andi	r24, 0xFE	; 254
+ 6c6:	81 b9       	out	0x01, r24	; 1
+ 6c8:	81 b1       	in	r24, 0x01	; 1
+ 6ca:	8d 7f       	andi	r24, 0xFD	; 253
+ 6cc:	81 b9       	out	0x01, r24	; 1
+ 6ce:	08 95       	ret
+
+000006d0 <TWI_voidInitMaster>:
+ 6d0:	cf 93       	push	r28
+ 6d2:	c8 2f       	mov	r28, r24
+ 6d4:	86 b7       	in	r24, 0x36	; 54
+ 6d6:	80 64       	ori	r24, 0x40	; 64
+ 6d8:	86 bf       	out	0x36, r24	; 54
+ 6da:	0e 94 5f 03 	call	0x6be	; 0x6be <TWI_SETBit_Rate>
+ 6de:	cc 23       	and	r28, r28
+ 6e0:	11 f0       	breq	.+4      	; 0x6e6 <TWI_voidInitMaster+0x16>
+ 6e2:	cc 0f       	add	r28, r28
+ 6e4:	c2 b9       	out	0x02, r28	; 2
+ 6e6:	86 b7       	in	r24, 0x36	; 54
+ 6e8:	84 60       	ori	r24, 0x04	; 4
+ 6ea:	86 bf       	out	0x36, r24	; 54
+ 6ec:	cf 91       	pop	r28
+ 6ee:	08 95       	ret
+
+000006f0 <TWI_SendStartCondition>:
+TWI_ErrStatus TWI_SendStartCondition(void)
+{
+	TWI_ErrStatus Local_Error= NoError;
+	   
+	/*Send start condition*/
+	SET_BIT(TWCR, TWCR_TWSTA);
+ 6f0:	86 b7       	in	r24, 0x36	; 54
+ 6f2:	80 62       	ori	r24, 0x20	; 32
+ 6f4:	86 bf       	out	0x36, r24	; 54
+
+	/*Clear the interrupt flag to start the previous operation*/
+	SET_BIT(TWCR,TWCR_TWINT);
+ 6f6:	86 b7       	in	r24, 0x36	; 54
+ 6f8:	80 68       	ori	r24, 0x80	; 128
+ 6fa:	86 bf       	out	0x36, r24	; 54
+
+	/*wait until the operation finishes and the flag is raised*/
+	while(!(TWCR&(1<<TWCR_TWINT)));
+ 6fc:	06 b6       	in	r0, 0x36	; 54
+ 6fe:	07 fe       	sbrs	r0, 7
+ 700:	fd cf       	rjmp	.-6      	; 0x6fc <TWI_SendStartCondition+0xc>
+
+	/*Check the operation status*/
+	if((TWSR & 0xF8) != START_ACK )
+ 702:	81 b1       	in	r24, 0x01	; 1
+ 704:	88 7f       	andi	r24, 0xF8	; 248
+ 706:	88 30       	cpi	r24, 0x08	; 8
+ 708:	11 f4       	brne	.+4      	; 0x70e <TWI_SendStartCondition+0x1e>
+	return status;
+}
+
+TWI_ErrStatus TWI_SendStartCondition(void)
+{
+	TWI_ErrStatus Local_Error= NoError;
+ 70a:	80 e0       	ldi	r24, 0x00	; 0
+ 70c:	08 95       	ret
+	while(!(TWCR&(1<<TWCR_TWINT)));
+
+	/*Check the operation status*/
+	if((TWSR & 0xF8) != START_ACK )
+	{
+		Local_Error = StartConditionErr;
+ 70e:	81 e0       	ldi	r24, 0x01	; 1
+	{
+		/*Do nothing*/
+	}
+
+	return Local_Error;
+}
+ 710:	08 95       	ret
+
+00000712 <TWI_SendRepeatedStart>:
+TWI_ErrStatus TWI_SendRepeatedStart(void)
+{
+	TWI_ErrStatus Local_Error= NoError;
+
+	/*Send start condition*/
+	SET_BIT(TWCR, TWCR_TWSTA);
+ 712:	86 b7       	in	r24, 0x36	; 54
+ 714:	80 62       	ori	r24, 0x20	; 32
+ 716:	86 bf       	out	0x36, r24	; 54
+
+	/*Clear the interrupt flag to start the previous operation*/
+	SET_BIT(TWCR,TWCR_TWINT);
+ 718:	86 b7       	in	r24, 0x36	; 54
+ 71a:	80 68       	ori	r24, 0x80	; 128
+ 71c:	86 bf       	out	0x36, r24	; 54
+
+	/*wait until the operation finishes and the flag is raised*/
+	while(!(TWCR&(1<<TWCR_TWINT)));
+ 71e:	06 b6       	in	r0, 0x36	; 54
+ 720:	07 fe       	sbrs	r0, 7
+ 722:	fd cf       	rjmp	.-6      	; 0x71e <TWI_SendRepeatedStart+0xc>
+
+	/*Check the operation status*/
+	if((TWSR & 0xF8) != REP_START_ACK )
+ 724:	81 b1       	in	r24, 0x01	; 1
+ 726:	88 7f       	andi	r24, 0xF8	; 248
+ 728:	80 31       	cpi	r24, 0x10	; 16
+ 72a:	11 f4       	brne	.+4      	; 0x730 <TWI_SendRepeatedStart+0x1e>
+	return Local_Error;
+}
+
+TWI_ErrStatus TWI_SendRepeatedStart(void)
+{
+	TWI_ErrStatus Local_Error= NoError;
+ 72c:	80 e0       	ldi	r24, 0x00	; 0
+ 72e:	08 95       	ret
+	while(!(TWCR&(1<<TWCR_TWINT)));
+
+	/*Check the operation status*/
+	if((TWSR & 0xF8) != REP_START_ACK )
+	{
+		Local_Error = RepeatedStartError;
+ 730:	82 e0       	ldi	r24, 0x02	; 2
+	{
+		/*Do nothing*/
+	}
+
+	return Local_Error;
+}
+ 732:	08 95       	ret
+
+00000734 <TWI_SendSlaveAddressWithWrite>:
+TWI_ErrStatus TWI_SendSlaveAddressWithWrite(u8 Copy_u8SlaveAddress)
+{
+	TWI_ErrStatus Local_Error= NoError;
+
+	/*send the 7bit slave address to the bus*/
+	TWDR = Copy_u8SlaveAddress <<1;
+ 734:	88 0f       	add	r24, r24
+ 736:	83 b9       	out	0x03, r24	; 3
+	/*set the write request in the LSB in the data register*/
+	CLR_BIT(TWDR,0);
+ 738:	83 b1       	in	r24, 0x03	; 3
+ 73a:	8e 7f       	andi	r24, 0xFE	; 254
+ 73c:	83 b9       	out	0x03, r24	; 3
+
+	/*Clear the start condition bit*/
+	CLR_BIT(TWCR,TWCR_TWSTA);
+ 73e:	86 b7       	in	r24, 0x36	; 54
+ 740:	8f 7d       	andi	r24, 0xDF	; 223
+ 742:	86 bf       	out	0x36, r24	; 54
+
+	/*Clear the interrupt flag to start the previous operation*/
+	SET_BIT(TWCR,TWCR_TWINT);
+ 744:	86 b7       	in	r24, 0x36	; 54
+ 746:	80 68       	ori	r24, 0x80	; 128
+ 748:	86 bf       	out	0x36, r24	; 54
+
+	/*wait until the operation finishes and the flag is raised*/
+	while((GET_BIT(TWCR,TWCR_TWINT))==0);
+ 74a:	06 b6       	in	r0, 0x36	; 54
+ 74c:	07 fe       	sbrs	r0, 7
+ 74e:	fd cf       	rjmp	.-6      	; 0x74a <TWI_SendSlaveAddressWithWrite+0x16>
+
+	/*Check the operation status*/
+	if((TWSR & 0xF8) != SLAVE_ADD_AND_WR_ACK )
+ 750:	81 b1       	in	r24, 0x01	; 1
+ 752:	88 7f       	andi	r24, 0xF8	; 248
+ 754:	88 31       	cpi	r24, 0x18	; 24
+ 756:	11 f4       	brne	.+4      	; 0x75c <TWI_SendSlaveAddressWithWrite+0x28>
+
+	return Local_Error;
+}
+TWI_ErrStatus TWI_SendSlaveAddressWithWrite(u8 Copy_u8SlaveAddress)
+{
+	TWI_ErrStatus Local_Error= NoError;
+ 758:	80 e0       	ldi	r24, 0x00	; 0
+ 75a:	08 95       	ret
+	while((GET_BIT(TWCR,TWCR_TWINT))==0);
+
+	/*Check the operation status*/
+	if((TWSR & 0xF8) != SLAVE_ADD_AND_WR_ACK )
+	{
+		Local_Error = SlaveAddressWithWriteErr;
+ 75c:	83 e0       	ldi	r24, 0x03	; 3
+	{
+		/*Do nothing*/
+	}
+
+	return Local_Error;
+}
+ 75e:	08 95       	ret
+
+00000760 <TWI_SendSlaveAddressWithRead>:
+TWI_ErrStatus TWI_SendSlaveAddressWithRead(u8 Copy_u8SlaveAddress)
+{
+	TWI_ErrStatus Local_Error= NoError;
+
+	/*send the 7bit slave address to the bus*/
+	TWDR = Copy_u8SlaveAddress <<1;
+ 760:	88 0f       	add	r24, r24
+ 762:	83 b9       	out	0x03, r24	; 3
+	/*set the read request in the LSB in the data register*/
+	SET_BIT(TWDR,0);
+ 764:	83 b1       	in	r24, 0x03	; 3
+ 766:	81 60       	ori	r24, 0x01	; 1
+ 768:	83 b9       	out	0x03, r24	; 3
+
+	/*Clear the start condition bit*/
+	CLR_BIT(TWCR,TWCR_TWSTA);
+ 76a:	86 b7       	in	r24, 0x36	; 54
+ 76c:	8f 7d       	andi	r24, 0xDF	; 223
+ 76e:	86 bf       	out	0x36, r24	; 54
+
+	/*Clear the interrupt flag to start the previous operation*/
+	SET_BIT(TWCR,TWCR_TWINT);
+ 770:	86 b7       	in	r24, 0x36	; 54
+ 772:	80 68       	ori	r24, 0x80	; 128
+ 774:	86 bf       	out	0x36, r24	; 54
+
+	/*wait until the operation finishes and the flag is raised*/
+	while((GET_BIT(TWCR,TWCR_TWINT))==0);
+ 776:	06 b6       	in	r0, 0x36	; 54
+ 778:	07 fe       	sbrs	r0, 7
+ 77a:	fd cf       	rjmp	.-6      	; 0x776 <TWI_SendSlaveAddressWithRead+0x16>
+
+	/*Check the operation status*/
+	if((TWSR & 0xF8) != SLAVE_ADD_AND_RD_ACK )
+ 77c:	81 b1       	in	r24, 0x01	; 1
+ 77e:	88 7f       	andi	r24, 0xF8	; 248
+ 780:	80 34       	cpi	r24, 0x40	; 64
+ 782:	11 f4       	brne	.+4      	; 0x788 <TWI_SendSlaveAddressWithRead+0x28>
+	return Local_Error;
+}
+
+TWI_ErrStatus TWI_SendSlaveAddressWithRead(u8 Copy_u8SlaveAddress)
+{
+	TWI_ErrStatus Local_Error= NoError;
+ 784:	80 e0       	ldi	r24, 0x00	; 0
+ 786:	08 95       	ret
+	while((GET_BIT(TWCR,TWCR_TWINT))==0);
+
+	/*Check the operation status*/
+	if((TWSR & 0xF8) != SLAVE_ADD_AND_RD_ACK )
+	{
+		Local_Error = SlaveAddressWithReadErr;
+ 788:	84 e0       	ldi	r24, 0x04	; 4
+	{
+		/*Do nothing*/
+	}
+
+	return Local_Error;
+}
+ 78a:	08 95       	ret
+
+0000078c <TWI_MasterWriteDataByte>:
+TWI_ErrStatus TWI_MasterWriteDataByte(u8 Copy_u8DataByte)
+{
+	TWI_ErrStatus Local_Error= NoError;
+
+	/*Write the data byte on the bus*/
+	TWDR = Copy_u8DataByte;
+ 78c:	83 b9       	out	0x03, r24	; 3
+
+	/*Clear the interrupt flag to start the previous operation*/
+	SET_BIT(TWCR,TWCR_TWINT);
+ 78e:	86 b7       	in	r24, 0x36	; 54
+ 790:	80 68       	ori	r24, 0x80	; 128
+ 792:	86 bf       	out	0x36, r24	; 54
+
+	/*wait until the operation finishes and the flag is raised*/
+	while(!(TWCR&(1<<TWCR_TWINT)));
+ 794:	06 b6       	in	r0, 0x36	; 54
+ 796:	07 fe       	sbrs	r0, 7
+ 798:	fd cf       	rjmp	.-6      	; 0x794 <TWI_MasterWriteDataByte+0x8>
+
+	/*Check the operation status*/
+	if((TWSR & 0xF8) !=  MSTR_WR_BYTE_ACK)
+ 79a:	81 b1       	in	r24, 0x01	; 1
+ 79c:	88 7f       	andi	r24, 0xF8	; 248
+ 79e:	88 32       	cpi	r24, 0x28	; 40
+ 7a0:	11 f4       	brne	.+4      	; 0x7a6 <TWI_MasterWriteDataByte+0x1a>
+}
+
+
+TWI_ErrStatus TWI_MasterWriteDataByte(u8 Copy_u8DataByte)
+{
+	TWI_ErrStatus Local_Error= NoError;
+ 7a2:	80 e0       	ldi	r24, 0x00	; 0
+ 7a4:	08 95       	ret
+	while(!(TWCR&(1<<TWCR_TWINT)));
+
+	/*Check the operation status*/
+	if((TWSR & 0xF8) !=  MSTR_WR_BYTE_ACK)
+	{
+		Local_Error = MasterWriteByteErr;
+ 7a6:	85 e0       	ldi	r24, 0x05	; 5
+	{
+		/*Do nothing*/
+	}
+
+	return Local_Error;
+}
+ 7a8:	08 95       	ret
+
+000007aa <TWI_MasterReadDataByte>:
+
+TWI_ErrStatus TWI_MasterReadDataByte(u8* Copy_pu8DataByte)
+{
+ 7aa:	fc 01       	movw	r30, r24
+	TWI_ErrStatus Local_Error= NoError;
+
+	/*Clear the interrupt flag to allow the slave send the data*/
+	SET_BIT(TWCR,TWCR_TWINT);
+ 7ac:	96 b7       	in	r25, 0x36	; 54
+ 7ae:	90 68       	ori	r25, 0x80	; 128
+ 7b0:	96 bf       	out	0x36, r25	; 54
+	/*wait until the operation finishes and the flag is raised*/
+	while(!(TWCR&(1<<TWCR_TWINT)));
+ 7b2:	06 b6       	in	r0, 0x36	; 54
+ 7b4:	07 fe       	sbrs	r0, 7
+ 7b6:	fd cf       	rjmp	.-6      	; 0x7b2 <TWI_MasterReadDataByte+0x8>
+
+	/*Check the operation status*/
+	
+		/*Read the received data*/
+		//_delay_ms(100);
+		*Copy_pu8DataByte = TWDR;
+ 7b8:	83 b1       	in	r24, 0x03	; 3
+ 7ba:	80 83       	st	Z, r24
+	
+
+	return Local_Error;
+}
+ 7bc:	80 e0       	ldi	r24, 0x00	; 0
+ 7be:	08 95       	ret
+
+000007c0 <TWI_SendStopCondition>:
+
+void TWI_SendStopCondition(void)
+{
+	/*Sent a stop condition on the bus*/
+	
+	SET_BIT(TWCR,TWCR_TWSTO);
+ 7c0:	86 b7       	in	r24, 0x36	; 54
+ 7c2:	80 61       	ori	r24, 0x10	; 16
+ 7c4:	86 bf       	out	0x36, r24	; 54
+
+	/*Clear the interrupt flag to start the previous operation*/
+	SET_BIT(TWCR,TWCR_TWINT);
+ 7c6:	86 b7       	in	r24, 0x36	; 54
+ 7c8:	80 68       	ori	r24, 0x80	; 128
+ 7ca:	86 bf       	out	0x36, r24	; 54
+ 7cc:	08 95       	ret
+
+000007ce <slave_fun>:
+#include "EEPROM_Interface.h"
+volatile u8 Speed_Limit;
+volatile static u8 Flag=0; //0 for read and 1 for write
+void slave_fun(void){
+	
+	if (SPI_Tranceive_NoBlock(&Speed_Limit)==Recive_NoBlock)
+ 7ce:	89 e6       	ldi	r24, 0x69	; 105
+ 7d0:	90 e0       	ldi	r25, 0x00	; 0
+ 7d2:	0e 94 dd 02 	call	0x5ba	; 0x5ba <SPI_Tranceive_NoBlock>
+ 7d6:	81 30       	cpi	r24, 0x01	; 1
+ 7d8:	19 f4       	brne	.+6      	; 0x7e0 <slave_fun+0x12>
+	{
+		Flag=0;
+ 7da:	10 92 66 00 	sts	0x0066, r1	; 0x800066 <Flag>
+ 7de:	08 95       	ret
+		
+	}
+	else{
+		Flag=1;
+ 7e0:	81 e0       	ldi	r24, 0x01	; 1
+ 7e2:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <Flag>
+ 7e6:	08 95       	ret
+
+000007e8 <Car_SlaveInit>:
+	}
+}
+
+
+void Car_SlaveInit(void){
+	LCD_Init();
+ 7e8:	0e 94 6e 02 	call	0x4dc	; 0x4dc <LCD_Init>
+	SET_BIT(SREG,7); //Set global variable (Replace it with the function)
+ 7ec:	8f b7       	in	r24, 0x3f	; 63
+ 7ee:	80 68       	ori	r24, 0x80	; 128
+ 7f0:	8f bf       	out	0x3f, r24	; 63
+	SPI_SlaveInit();
+ 7f2:	0e 94 b8 02 	call	0x570	; 0x570 <SPI_SlaveInit>
+    TWI_SETBit_Rate();
+ 7f6:	0e 94 5f 03 	call	0x6be	; 0x6be <TWI_SETBit_Rate>
+	TWI_voidInitMaster(0);
+ 7fa:	80 e0       	ldi	r24, 0x00	; 0
+ 7fc:	0e 94 68 03 	call	0x6d0	; 0x6d0 <TWI_voidInitMaster>
+	SPI_SetCallBack(slave_fun);
+ 800:	87 ee       	ldi	r24, 0xE7	; 231
+ 802:	93 e0       	ldi	r25, 0x03	; 3
+ 804:	0e 94 e7 02 	call	0x5ce	; 0x5ce <SPI_SetCallBack>
+ 808:	08 95       	ret
+
+0000080a <Car_SlaveRunnable>:
+}
+
+
+void Car_SlaveRunnable(void){
+	
+	if(Flag==1){
+ 80a:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <Flag>
+ 80e:	81 30       	cpi	r24, 0x01	; 1
+ 810:	99 f4       	brne	.+38     	; 0x838 <Car_SlaveRunnable+0x2e>
+		EEPROM_voidSendDataByte(5,Speed_Limit);
+ 812:	60 91 69 00 	lds	r22, 0x0069	; 0x800069 <Speed_Limit>
+ 816:	85 e0       	ldi	r24, 0x05	; 5
+ 818:	90 e0       	ldi	r25, 0x00	; 0
+ 81a:	0e 94 8d 01 	call	0x31a	; 0x31a <EEPROM_voidSendDataByte>
+		Speed_Limit=EEPROM_u8ReadDataByte(5);
+ 81e:	85 e0       	ldi	r24, 0x05	; 5
+ 820:	90 e0       	ldi	r25, 0x00	; 0
+ 822:	0e 94 bd 01 	call	0x37a	; 0x37a <EEPROM_u8ReadDataByte>
+ 826:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <Speed_Limit>
+		Flag=2;
+ 82a:	82 e0       	ldi	r24, 0x02	; 2
+ 82c:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <Flag>
+		SPI_Transceive(Speed_Limit);
+ 830:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <Speed_Limit>
+ 834:	0e 94 d2 02 	call	0x5a4	; 0x5a4 <SPI_Transceive>
+ 838:	08 95       	ret
+
+0000083a <__udivmodhi4>:
+ 83a:	aa 1b       	sub	r26, r26
+ 83c:	bb 1b       	sub	r27, r27
+ 83e:	51 e1       	ldi	r21, 0x11	; 17
+ 840:	07 c0       	rjmp	.+14     	; 0x850 <__udivmodhi4_ep>
+
+00000842 <__udivmodhi4_loop>:
+ 842:	aa 1f       	adc	r26, r26
+ 844:	bb 1f       	adc	r27, r27
+ 846:	a6 17       	cp	r26, r22
+ 848:	b7 07       	cpc	r27, r23
+ 84a:	10 f0       	brcs	.+4      	; 0x850 <__udivmodhi4_ep>
+ 84c:	a6 1b       	sub	r26, r22
+ 84e:	b7 0b       	sbc	r27, r23
+
+00000850 <__udivmodhi4_ep>:
+ 850:	88 1f       	adc	r24, r24
+ 852:	99 1f       	adc	r25, r25
+ 854:	5a 95       	dec	r21
+ 856:	a9 f7       	brne	.-22     	; 0x842 <__udivmodhi4_loop>
+ 858:	80 95       	com	r24
+ 85a:	90 95       	com	r25
+ 85c:	bc 01       	movw	r22, r24
+ 85e:	cd 01       	movw	r24, r26
+ 860:	08 95       	ret
+
+00000862 <_exit>:
+ 862:	f8 94       	cli
+
+00000864 <__stop_program>:
+ 864:	ff cf       	rjmp	.-2      	; 0x864 <__stop_program>

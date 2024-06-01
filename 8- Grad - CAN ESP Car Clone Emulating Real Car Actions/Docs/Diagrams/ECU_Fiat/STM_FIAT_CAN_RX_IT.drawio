@@ -1,0 +1,59 @@
+<mxfile host="Electron" modified="2023-11-02T00:42:04.694Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.0 Chrome/112.0.5615.204 Electron/24.5.1 Safari/537.36" etag="3mQjYNnaUCGuY9Yf2g-X" version="21.5.0" type="device">
+  <diagram name="Page-1" id="cxeBOrwpK8nN50zcZmI6">
+    <mxGraphModel dx="2726" dy="2387" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="A5i7G-RLf4WkhE8potxu-13" value="&lt;h1&gt;HAL_CAN_RxFifo0MsgPendingCallback&lt;/h1&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="-1530" y="-883" width="628" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2nFFmFus7sa76uc8o4wt-1" target="2nFFmFus7sa76uc8o4wt-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;div style=&quot;&quot;&gt;Start&lt;/div&gt;" Function="EN_DIO_Error_T DIO_init(uint8_t pinNumber, EN_DIO_PORT_T portNumber, EN_DIO_DIRECTION_T direction);" tags="Flowchart" id="2nFFmFus7sa76uc8o4wt-1">
+          <mxCell style="verticalAlign=middle;align=center;overflow=width;vsdxID=30;fillColor=#dae8fc;shape=stencil(tVLREoIgEPwaHnEQxsl3s/9gEpSJwDko7e+DsEkze2l627vdu5uFRaxyHe8FosR5sCcxqMZ3iO0Rpcp0ApQPCLEasUpaEC3Yi2lS3fOojOhsr3HDmObyMtsVcYqS29Qh5FEfklwrM5OXeUa/yjkcAwfr7TDpiyTfXvjkMR+Vw2A998qaBac5tAKHU1hq3i4oNwjRr9ofvayt/+Rk+yX/4iWA159KpXWKxJx/z0Bopfyw+g4=);strokeColor=#6c8ebf;spacingTop=-1;spacingBottom=-1;spacingLeft=-1;spacingRight=-1;points=[[0.5,1,0],[0.5,0,0],[0,0.5,0],[1,0.5,0]];labelBackgroundColor=none;rounded=1;html=1;whiteSpace=wrap;fontFamily=Helvetica;" parent="1" vertex="1">
+            <mxGeometry x="-1466" y="-781" width="101" height="38" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2nFFmFus7sa76uc8o4wt-4" target="2nFFmFus7sa76uc8o4wt-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-4" value="Init local variable of type&lt;br&gt;&lt;b&gt;st_can_queue_item_t&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="-1495.625" y="-707" width="160.25" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2nFFmFus7sa76uc8o4wt-5" target="2nFFmFus7sa76uc8o4wt-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-5" value="Store receieved data into&lt;br&gt;&lt;b&gt;st_can_queue_item_t.RxData&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="-1507" y="-630" width="183" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2nFFmFus7sa76uc8o4wt-6" target="2nFFmFus7sa76uc8o4wt-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-6" value="Store receieved msg ID&lt;br&gt;&lt;b&gt;st_can_queue_item_t.item_id&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="-1508.31" y="-553" width="185.62" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="2nFFmFus7sa76uc8o4wt-10" target="2nFFmFus7sa76uc8o4wt-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-10" value="Queue &lt;b&gt;st_can_queue_item_t&lt;/b&gt;&amp;nbsp;into can processing queue" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="-1515" y="-403" width="199" height="51" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;div style=&quot;&quot;&gt;End&lt;/div&gt;" Function="EN_DIO_Error_T DIO_init(uint8_t pinNumber, EN_DIO_PORT_T portNumber, EN_DIO_DIRECTION_T direction);" tags="Flowchart" id="2nFFmFus7sa76uc8o4wt-13">
+          <mxCell style="verticalAlign=middle;align=center;overflow=width;vsdxID=30;fillColor=#dae8fc;shape=stencil(tVLREoIgEPwaHnEQxsl3s/9gEpSJwDko7e+DsEkze2l627vdu5uFRaxyHe8FosR5sCcxqMZ3iO0Rpcp0ApQPCLEasUpaEC3Yi2lS3fOojOhsr3HDmObyMtsVcYqS29Qh5FEfklwrM5OXeUa/yjkcAwfr7TDpiyTfXvjkMR+Vw2A998qaBac5tAKHU1hq3i4oNwjRr9ofvayt/+Rk+yX/4iWA159KpXWKxJx/z0Bopfyw+g4=);strokeColor=#6c8ebf;spacingTop=-1;spacingBottom=-1;spacingLeft=-1;spacingRight=-1;points=[[0.5,1,0],[0.5,0,0],[0,0.5,0],[1,0.5,0]];labelBackgroundColor=none;rounded=1;html=1;whiteSpace=wrap;fontFamily=Helvetica;" parent="1" vertex="1">
+            <mxGeometry x="-1466" y="-320" width="101" height="38" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2nFFmFus7sa76uc8o4wt-15" target="2nFFmFus7sa76uc8o4wt-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-15" value="Toggle CAN RX LED" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="-1504.75" y="-485" width="178.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="70cu1V1Pi4vNWJKREXuB-3" value="&lt;div style=&quot;background-color:#ffffff;color:#080808&quot;&gt;&lt;pre style=&quot;font-family:&#39;JetBrains Mono&#39;,monospace;font-size:9.8pt;&quot;&gt;&lt;br&gt;&lt;span style=&quot;color:#8c8c8c;font-style:italic;&quot;&gt;/* struct for CAN queued item to be processed */&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;color:#0033b3;&quot;&gt;typedef struct&lt;br&gt;&lt;/span&gt;{&lt;br&gt;    uint16_t         &lt;span style=&quot;color:#660e7a;&quot;&gt;item_id             &lt;/span&gt;;&lt;br&gt;    &lt;span style=&quot;color:#371f80;&quot;&gt;un_data_converter_t &lt;/span&gt;&lt;span style=&quot;color:#660e7a;&quot;&gt;un_data_converter  &lt;/span&gt;;&lt;br&gt;}&lt;span style=&quot;color:#371f80;&quot;&gt;st_can_queued_item_t&lt;/span&gt;;&lt;/pre&gt;&lt;/div&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="-1277" y="-713" width="394" height="143" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

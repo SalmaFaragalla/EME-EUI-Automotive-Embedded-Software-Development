@@ -1,0 +1,5 @@
+../Core/Src/simple_RTOS.c:12:6:BlinkRed	8	static
+../Core/Src/simple_RTOS.c:16:6:BlinkYellow	8	static
+../Core/Src/simple_RTOS.c:20:6:BlinkGreen	8	static
+../Core/Src/simple_RTOS.c:24:6:CreateTask	16	static
+../Core/Src/simple_RTOS.c:29:6:Scheduler	16	static

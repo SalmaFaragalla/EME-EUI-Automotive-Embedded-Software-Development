@@ -1,0 +1,24 @@
+/*
+ * Ext_INT_Cfg.h
+ *
+ * Created: 8/19/2023 10:59:49 AM
+ *  Author: eme
+ */ 
+
+
+#ifndef EXT_INT_CFG_H_
+#define EXT_INT_CFG_H_
+
+/*MY TOUCH*/
+#define ISC00 0
+#define ISC01 1
+#define ISC10 2
+#define ISC11 3
+#define ISC2  6
+
+#define GLOBAL_INTERRUPT		GLOBAL_INTERRUPT_ENABLE
+#define EXTENAL_INT0_TRIGGER	INT0_TRIGGER_RISING_EDGE
+#define EXTENAL_INT1_TRIGGER	INT1_TRIGGER_FALLING_EDGE
+#define EXTENAL_INT2_TRIGGER	INT2_TRIGGER_RISING_EDGE
+
+#endif /* EXT_INT_CFG_H_ */

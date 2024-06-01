@@ -1,0 +1,88 @@
+<mxfile host="Electron" modified="2023-11-02T00:55:55.314Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.0 Chrome/112.0.5615.204 Electron/24.5.1 Safari/537.36" etag="uTPnCP_PUsCO4qzwHwMu" version="21.5.0" type="device">
+  <diagram name="Page-1" id="cxeBOrwpK8nN50zcZmI6">
+    <mxGraphModel dx="2538" dy="2189" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="A5i7G-RLf4WkhE8potxu-13" value="&lt;h1&gt;task_uart_tx_data&lt;/h1&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="-1361" y="-883" width="290" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2nFFmFus7sa76uc8o4wt-1" target="2nFFmFus7sa76uc8o4wt-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;div style=&quot;&quot;&gt;Start&lt;/div&gt;" Function="EN_DIO_Error_T DIO_init(uint8_t pinNumber, EN_DIO_PORT_T portNumber, EN_DIO_DIRECTION_T direction);" tags="Flowchart" id="2nFFmFus7sa76uc8o4wt-1">
+          <mxCell style="verticalAlign=middle;align=center;overflow=width;vsdxID=30;fillColor=#dae8fc;shape=stencil(tVLREoIgEPwaHnEQxsl3s/9gEpSJwDko7e+DsEkze2l627vdu5uFRaxyHe8FosR5sCcxqMZ3iO0Rpcp0ApQPCLEasUpaEC3Yi2lS3fOojOhsr3HDmObyMtsVcYqS29Qh5FEfklwrM5OXeUa/yjkcAwfr7TDpiyTfXvjkMR+Vw2A998qaBac5tAKHU1hq3i4oNwjRr9ofvayt/+Rk+yX/4iWA159KpXWKxJx/z0Bopfyw+g4=);strokeColor=#6c8ebf;spacingTop=-1;spacingBottom=-1;spacingLeft=-1;spacingRight=-1;points=[[0.5,1,0],[0.5,0,0],[0,0.5,0],[1,0.5,0]];labelBackgroundColor=none;rounded=1;html=1;whiteSpace=wrap;fontFamily=Helvetica;" parent="1" vertex="1">
+            <mxGeometry x="-1324.06" y="-734" width="101" height="38" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2nFFmFus7sa76uc8o4wt-4" target="2nFFmFus7sa76uc8o4wt-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-4" value="Init local variable of type&lt;br&gt;&lt;b&gt;app_uart_queue_item&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="-1353.685" y="-660" width="160.25" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2nFFmFus7sa76uc8o4wt-5" target="fu7kArxzr6E2AAuzPki2-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2nFFmFus7sa76uc8o4wt-5" value="Init local variable&lt;br&gt;&lt;b style=&quot;&quot;&gt;uartTxStatus = HAL_OK&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="-1365.06" y="-583" width="183" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-1" value="app_uart_queue_item&lt;br&gt;is of type uint8 holding a single byte" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+          <mxGeometry x="-1145.06" y="-676.5" width="214" height="77" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fu7kArxzr6E2AAuzPki2-2" target="fu7kArxzr6E2AAuzPki2-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-2" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1296.06" y="-510" width="45" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fu7kArxzr6E2AAuzPki2-4" target="fu7kArxzr6E2AAuzPki2-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-4" value="Dequeue data from &lt;b&gt;uartTransmitQueue&lt;/b&gt; into &lt;b&gt;app_uart_queue_item&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="-1366.37" y="-431.5" width="185.62" height="52.5" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-5" value="Task blocks here if queue is empty and resumes when new data is added" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+          <mxGeometry x="-1139.06" y="-447.5" width="214" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fu7kArxzr6E2AAuzPki2-6" target="fu7kArxzr6E2AAuzPki2-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-6" value="Transmit&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;app_uart_queue_item &lt;/b&gt;&lt;span style=&quot;border-color: var(--border-color);&quot;&gt;over UART, store result in &lt;b&gt;uartTxStatus&lt;/b&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="-1366.37" y="-339" width="185.62" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-18" value="True" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fu7kArxzr6E2AAuzPki2-9" target="fu7kArxzr6E2AAuzPki2-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-19" value="False" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fu7kArxzr6E2AAuzPki2-9" target="fu7kArxzr6E2AAuzPki2-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-9" value="&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;uartTxStatus == HAL_OK&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="-1319.31" y="-264" width="91.5" height="99" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fu7kArxzr6E2AAuzPki2-11" target="fu7kArxzr6E2AAuzPki2-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1413.06" y="-100.5" />
+              <mxPoint x="-1413.06" y="-487.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-11" value="Toggle UART TX LED" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="-1362.56" y="-123" width="178" height="45.5" as="geometry" />
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fu7kArxzr6E2AAuzPki2-12" target="fu7kArxzr6E2AAuzPki2-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-912.06" y="-214.5" />
+              <mxPoint x="-912.06" y="-487.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fu7kArxzr6E2AAuzPki2-12" value="Enqueue byte to front of &lt;b&gt;uartTransmitQueue&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="-1137.56" y="-240" width="199" height="51" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
